@@ -66,6 +66,14 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Bootstrap\css\bootstrap-theme.css.map" />
+    <Content Include="Bootstrap\css\bootstrap-theme.min.css.map" />
+    <Content Include="Bootstrap\css\bootstrap.css.map" />
+    <Content Include="Bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Bootstrap\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -73,13 +81,24 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="WiredGroove.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Bootstrap\css\bootstrap-theme.css" />
+    <Content Include="Bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="Bootstrap\css\bootstrap.css" />
+    <Content Include="Bootstrap\css\bootstrap.min.css" />
+    <Content Include="Bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Bootstrap\js\bootstrap.js" />
+    <Content Include="Bootstrap\js\bootstrap.min.js" />
+    <Content Include="Bootstrap\js\npm.js" />
     <Content Include="result.aspx" />
     <Content Include="test1.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\DataLayer.cs" />
+    <Compile Include="Database\IDataLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="result.aspx.cs">
       <DependentUpon>result.aspx</DependentUpon>
@@ -94,6 +113,13 @@
     </Compile>
     <Compile Include="test1.aspx.designer.cs">
       <DependentUpon>test1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WiredGroove.Master.cs">
+      <DependentUpon>WiredGroove.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WiredGroove.Master.designer.cs">
+      <DependentUpon>WiredGroove.Master</DependentUpon>
     </Compile>
   </ItemGroup>
   <PropertyGroup>
