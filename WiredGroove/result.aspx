@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="result.aspx.cs" Inherits="WiredGroove.result" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="result.aspx.cs" Inherits="WiredGroove.result"%>
 
 <!DOCTYPE html>
 
