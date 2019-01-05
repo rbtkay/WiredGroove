@@ -3,6 +3,19 @@
     height: 8%;
 }
 
+
+.bgImages {
+    /* The image used */
+    background-image: url('../Images/HomePageBackground.jpg');
+    /* Full height */
+    height: 100%;
+    width: 100%;
+    padding-top: initial;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
 nav a {
     font-size: larger;
     font-weight: bold;
@@ -20,4 +33,5 @@ nav > div > div > ul > li > form > div > input {
 
 .form-control {
     width: 500px !important;
+
 }

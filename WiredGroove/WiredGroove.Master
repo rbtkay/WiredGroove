@@ -5,11 +5,16 @@
 <html>
 <head runat="server">
     <title>Wired Groove</title>
-    <script src="Scripts/jquery-3.3.1.js"></script>
-    <link href="Bootstrap/css/bootstrap.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="~/Bootstrap/css/bootstrap.css" />
     <link href="Styles/custom.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="Bootstrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="~/Styles/jquery-ui.min.css" />
+    <script type="text/javascript" src="./Scripts/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="./Scripts/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="./Scripts/HomePage.js"></script>
+    <script type="text/javascript" src="./Bootstrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -75,7 +80,6 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
-
 
     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
     </asp:ContentPlaceHolder>
