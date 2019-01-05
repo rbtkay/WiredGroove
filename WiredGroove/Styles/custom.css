@@ -3,6 +3,7 @@
     height: 8%;
 }
 
+
 .bgImages {
     /* The image used */
     background-image: url('../Images/HomePageBackground.jpg');
@@ -14,4 +15,23 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+
+nav a {
+    font-size: larger;
+    font-weight: bold;
+    color: white;
+}
+
+nav > div > div > ul > li > a:hover {
+    background-color: white;
+    color: maroon;
+}
+
+nav > div > div > ul > li > form > div > input {
+    width: 20%;
+}
+
+.form-control {
+    width: 500px !important;
+
 }
