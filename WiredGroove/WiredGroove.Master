@@ -6,8 +6,13 @@
 <head runat="server">
     <title>Wired Groove</title>
     <link rel="stylesheet" href="~/Bootstrap/css/bootstrap.css" />
-    <link rel="stylesheet" href="~/CustomStyles/custom.css" />
-    <script type="text/javascript" src="~/Bootstrap/js/bootstrap.js"></script>
+    <link href="Styles/custom.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Styles/jquery-ui.min.css" />
+    <script type="text/javascript" src="./Scripts/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="./Scripts/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="./Scripts/HomePage.js"></script>
+    <script type="text/javascript" src="./Bootstrap/js/bootstrap.js"></script>
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -70,9 +75,7 @@
         <!-- /.container-fluid -->
     </nav>
 
-
     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-        <h1 class="text-danger"></h1>
     </asp:ContentPlaceHolder>
     <%--</form>--%>
 </body>
