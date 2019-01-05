@@ -1,4 +1,17 @@
 ﻿.masterTopBar {
-  background-color: maroon;
-  height: 8%;
+    background-color: maroon;
+    height: 8%;
+    font: 20px;
+}
+
+.headerA {
+    color: white;
+
+    font-weight: bold;
+}
+
+#a1, #a2 {
+    color: white;
+    font: 20px;
+    font-weight: bold;
 }
