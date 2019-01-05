@@ -82,14 +82,18 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-
+    <Content Include="Images\RedMic.png" />
+    <Content Include="Images\RedMic01.png" />
+    <Content Include="Images\RedMic05.jpg" />
+    <Content Include="Images\RedStageHD.jpg" />
+    <Content Include="Images\Red.jpg" />
+    <Content Include="SignIn.aspx" />
     <Content Include="Styles\custom.css" />
     <Content Include="Styles\jquery-ui.min.css" />
     <Content Include="Styles\jquery-ui.structure.min.css" />
     <Content Include="Styles\jquery-ui.theme.min.css" />
     <Content Include="HomePage.aspx" />
     <Content Include="Images\HomePageBackground.jpg" />
-
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Images\Logo.png" />
     <Content Include="Scripts\HomePage.js" />
@@ -128,6 +132,13 @@
     </Compile>
     <Compile Include="result.aspx.designer.cs">
       <DependentUpon>result.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SignIn.aspx.cs">
+      <DependentUpon>SignIn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SignIn.aspx.designer.cs">
+      <DependentUpon>SignIn.aspx</DependentUpon>
     </Compile>
     <Compile Include="test1.aspx.cs">
       <DependentUpon>test1.aspx</DependentUpon>
