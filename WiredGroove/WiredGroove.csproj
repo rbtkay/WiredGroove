@@ -82,7 +82,8 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <Content Include="CustomStyles\custom.css" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Styles\custom.css" />
     <Content Include="Images\Logo.png" />
     <Content Include="WebForm1.aspx" />
     <Content Include="WiredGroove.Master" />
