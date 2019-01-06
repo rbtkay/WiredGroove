@@ -22,9 +22,14 @@ namespace WiredGroove
             string phone = txtPhoneID.Text;
             string password = txtPasswordID.Text;
             string dob = txtDoBID.Text;
-            string preferences = ddlPreferencesID.Text;
+            string preferences = ddlPreferencesID.Text; // to change this to read from list instead of ddl when genres implemented
 
-            if (!string.IsNullOrEmpty(email))
+            if (!string.IsNullOrEmpty(email) &&
+                !string.IsNullOrEmpty(name) &&
+                !string.IsNullOrEmpty(phone) &&
+                !string.IsNullOrEmpty(password) &&
+                !string.IsNullOrEmpty(dob) &&
+                !string.IsNullOrEmpty(preferences))
             {
                 DataLayerFactory.Instance.InsertAccount(email, name, phone, password, dob, preferences);
                 txtEmailID.Text = "";

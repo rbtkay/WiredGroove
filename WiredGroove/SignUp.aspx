@@ -25,17 +25,23 @@
 
                 <div class="form-group">
                     <label for="txtPasswordID">Password</label>
-                    <asp:TextBox ID="txtPasswordID" ClientIDMode="Static" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtPasswordID" ClientIDMode="Static" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
+                    <small id="smPasswordID" class="form-text text-muted" style="color: red;"></small>
+
                 </div>
 
                 <div class="form-group">
                     <label for="txtConfirmPasswordID">Confirm Password</label>
-                    <asp:TextBox ID="txtConfirmPasswordID" ClientIDMode="Static" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtConfirmPasswordID" ClientIDMode="Static" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
+                    <small id="smConfirmPasswordID" class="form-text text-muted" style="color: red;"></small>
+
                 </div>
 
                 <div class="form-group">
                     <label for="txtPhoneID">Phone</label>
                     <asp:TextBox ID="txtPhoneID" ClientIDMode="Static" runat="server" CssClass="form-control"></asp:TextBox>
+                    <small id="smPhoneID" class="form-text text-muted" style="color: red;"></small>
+
                 </div>
 
                 <div class="form-group">
@@ -55,6 +61,7 @@
                     <label for="lbPreferencesID">Preferences</label>
                     <br />
                     <asp:ListBox ID="lbPreferencesID" runat="server" Width="100%"></asp:ListBox>
+
                 </div>
 
                 <br />
