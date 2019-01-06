@@ -42,6 +42,7 @@ namespace WiredGroove.Database
                     conn.Close();
                 }
             }
+        }
 
         public bool CheckAccount(string email, string password)
         {
