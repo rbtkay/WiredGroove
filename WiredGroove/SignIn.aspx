@@ -12,7 +12,7 @@
                 </div>
                 <div class="form-group">
                     <label for="txtEmailID">Email</label>
-                    <asp:TextBox ID="txtEmailID" runat="server" ClientIDMode="Static" class="form-control" OnTextChanged="txtEmailID_TextChanged"></asp:TextBox>
+                    <asp:TextBox ID="txtEmailID" runat="server" ClientIDMode="Static" class="form-control"></asp:TextBox>
 
                 </div>
                 <div class="form-group">

@@ -25,13 +25,13 @@ namespace WiredGroove.Database
             try
             {
                 SqlCommand cmd = new SqlCommand(query, connection);
-                
+
 
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    if(reader["Account_Email"].ToString() == email && reader["Account_Password"].ToString() == password)
+                    if (reader["Account_Email"].ToString() == email && reader["Account_Password"].ToString() == password)
                     {
                         isAuthentic = true;
                         break;
@@ -40,7 +40,7 @@ namespace WiredGroove.Database
             }
             catch
             {
-
+                throw;
             }
             finally
             {

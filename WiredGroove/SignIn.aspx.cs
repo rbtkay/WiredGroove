@@ -19,19 +19,11 @@ namespace WiredGroove
         {
             if(DataLayerFactory.Instance.CheckAccount(txtEmailID.Text, txtPasswordID.Text))
             {
-                Response.Redirect("result.aspx");
+                Response.Redirect("sHomePage.aspx");
             }
             else
             {
                 txtErrID.Style.Remove("visibility");
-            }
-        }
-
-        protected void txtEmailID_TextChanged(object sender, EventArgs e)
-        {
-            if(txtEmailID.Text == "")
-            {
-                txtErrID.Style.Add("visibility", "hidden");
             }
         }
     }
