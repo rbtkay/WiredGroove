@@ -87,6 +87,7 @@
     <Content Include="Images\RedMic05.jpg" />
     <Content Include="Images\RedStageHD.jpg" />
     <Content Include="Images\Red.jpg" />
+    <Content Include="Scripts\SignIn.Js" />
     <Content Include="SignIn.aspx" />
     <Content Include="Styles\custom.css" />
     <Content Include="Styles\jquery-ui.min.css" />
