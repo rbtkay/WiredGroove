@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.SqlClient;
+using WiredGroove.Classes;
 
 namespace WiredGroove.Database
 {
@@ -48,13 +49,13 @@ namespace WiredGroove.Database
         {
             bool isAuthentic = false;
             SqlConnection connection = new SqlConnection(_connectionString);
-            string query = "select Account_Email, Account_Password from Account_T";
             connection.Open();
 
             try
             {
-                SqlCommand cmd = new SqlCommand(query, connection);
+                string query = "select Account_Email, Account_Password from Account_T";
 
+                SqlCommand cmd = new SqlCommand(query, connection);
 
                 SqlDataReader reader = cmd.ExecuteReader();
 
@@ -67,9 +68,9 @@ namespace WiredGroove.Database
                     }
                 }
             }
-            catch
+            catch (Exception e)
             {
-                throw;
+                throw e;
             }
             finally
             {
@@ -79,5 +80,42 @@ namespace WiredGroove.Database
             return isAuthentic;
         }
 
+
+        public List<PopularArtist> GetPopularArtist()
+        {
+
+            List<PopularArtist> listArtist = new List<PopularArtist>();
+
+            SqlConnection connection = new SqlConnection(_connectionString);
+            connection.Open();
+
+            try
+            {
+                string query = "select Artist_Name, Artist_Instrument, Artist_Genre, Artist_Band from Artist_T";
+
+                SqlCommand cmd = new SqlCommand(query, connection);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    PopularArtist artist = new PopularArtist();
+                    artist.artistName = reader["Artist_Name"].ToString();
+                    artist.artistInstrument = reader["Artist_Instrument"].ToString();
+                    artist.artistGenre = reader["Artist_Genre"].ToString();
+                    artist.artistBand = reader["Artist_Band"].ToString();
+                    listArtist.Add(artist);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return listArtist;
+        }
     }
 }

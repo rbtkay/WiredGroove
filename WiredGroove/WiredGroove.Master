@@ -15,7 +15,7 @@
     <script type="text/javascript" src="./Scripts/SignUp.js"></script>
     <script type="text/javascript" src="./Bootstrap/js/bootstrap.js"></script>
     <script type="text/javascript" src="Scripts/SignIn.Js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -85,6 +85,7 @@
 
     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
     </asp:ContentPlaceHolder>
+
     <%--</form>--%>
 </body>
 </html>

@@ -9,10 +9,7 @@
 </head>
 <body>
     <form id="form1" runat="server" action="result.aspx" method="post">
-        <asp:GridView ID="GridView1" runat="server"></asp:GridView>
-        <asp:Button ID="Button1" runat="server" Text="Button" />
-
-        <br />
+        
     </form>
 </body>
 </html>

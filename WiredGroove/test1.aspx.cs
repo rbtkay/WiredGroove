@@ -7,6 +7,8 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Web.Script.Serialization;
+using WiredGroove.Database;
 
 namespace WiredGroove
 {
@@ -14,13 +16,16 @@ namespace WiredGroove
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            GridView1.DataSource = LoadData();
-            GridView1.DataBind();
-            if (IsPostBack)
-            {
-                Response.Write("Session" + Session["test"].ToString());
-            }
-                
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.Serialize(DataLayerFactory.Instance.GetPopularArtist());
+            Context.Response.Write(js.Serialize(DataLayerFactory.Instance.GetPopularArtist()));
+            //GridView1.DataSource = LoadData();
+            //GridView1.DataBind();
+            //if (IsPostBack)
+            //{
+            //    Response.Write("Session" + Session["test"].ToString());
+            //}
+
         }
 
         public DataTable LoadData()
