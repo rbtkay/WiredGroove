@@ -39,7 +39,7 @@
                 <br />
 
                 <div class="form-group" style="text-align: center">
-                    <asp:Button ID="btnLookupID" runat="server" Text="Lookup Artists" />
+                    <asp:Button ID="btnLookupID" runat="server" Text="Lookup Artists" CssClass="ui-button"/>
                 </div>
             </form>
         </div>

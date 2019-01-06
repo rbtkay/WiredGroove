@@ -12,6 +12,7 @@
     <script type="text/javascript" src="./Scripts/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="./Scripts/jquery-ui.min.js"></script>
     <script type="text/javascript" src="./Scripts/HomePage.js"></script>
+    <script type="text/javascript" src="./Scripts/SignUp.js"></script>
     <script type="text/javascript" src="./Bootstrap/js/bootstrap.js"></script>
     <script type="text/javascript" src="Scripts/SignIn.Js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
@@ -57,9 +58,9 @@
                     <li>
                         <form class="navbar-form navbar-left">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Try 'Beirut'">
+                                <input type="text" class="form-control" placeholder="Try 'Beirut' or 'Rock'" style="width: 500px;">
                             </div>
-                            <button type="submit"><i class="fa fa-search"></i></button>
+                            <button type="submit" class="ui-button"><i class="fa fa-search"></i></button>
                         </form>
                     </li>
                     <li><a href="SignIn.aspx">Sign In</a></li>
