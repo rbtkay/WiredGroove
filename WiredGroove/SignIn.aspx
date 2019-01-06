@@ -11,7 +11,7 @@
                 </div>
                 <div class="form-group">
                     <label for="txtEmailID">Email</label>
-                    <asp:TextBox ID="txtEmailID" runat="server" class="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtEmailID" ClientIDMode="Static" runat="server" CssClass="form-control"></asp:TextBox>
                     <%--<small id="txtLocationHelperID" class="form-text text-muted">Don't worry, we won't track your location (yet)</small>--%>
                 </div>
                 <div class="form-group">
@@ -36,8 +36,9 @@
 
                 <br />
 
-                <div class="form-group" style="text-align: center">
-                    <asp:Button ID="btnSignIn" runat="server" Text="Sign In" />
+                <div class="form-group" style="margin-left: 30%;">
+                    <asp:Button ID="btnSignIn" runat="server" Text="Sign In" CssClass="ui-button"/>
+                    <asp:HyperLink ID="hlSignUp" runat="server" style="margin-left: 30%;" NavigateUrl="~/SignUp.aspx">New to WiredGroove?</asp:HyperLink>
                 </div>
             </form>
         </div>

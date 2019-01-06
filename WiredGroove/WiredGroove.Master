@@ -56,9 +56,9 @@
                     <li>
                         <form class="navbar-form navbar-left">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Try 'Beirut'">
+                                <input type="text" class="form-control" placeholder="Try 'Beirut' or 'Rock'" style="width: 500px;">
                             </div>
-                            <button type="submit"><i class="fa fa-search"></i></button>
+                            <button type="submit" class="ui-button"><i class="fa fa-search"></i></button>
                         </form>
                     </li>
                     <li><a href="SignIn.aspx">Sign In</a></li>
