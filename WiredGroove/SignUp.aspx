@@ -14,12 +14,13 @@
                 <div class="form-group">
                     <label for="txtFullNameID">Full Name</label>
                     <asp:TextBox ID="txtFullNameID" ClientIDMode="Static" runat="server" CssClass="form-control"></asp:TextBox>
-                    <%--<small id="txtLocationHelperID" class="form-text text-muted">Hello</small>--%>
+                    <small id="smNameID" class="form-text text-muted" style="color: red;"></small>
                 </div>
 
                 <div class="form-group">
                     <label for="txtEmailID">Email</label>
                     <asp:TextBox ID="txtEmailID" ClientIDMode="Static" runat="server" CssClass="form-control"></asp:TextBox>
+                    <small id="smEmailID" class="form-text text-muted" style="color: red;"></small>
                 </div>
 
                 <div class="form-group">
@@ -53,9 +54,7 @@
                 <div class="form-group">
                     <label for="lbPreferencesID">Preferences</label>
                     <br />
-                    <asp:ListBox ID="lbPreferencesID" runat="server" Width="100%">
-                        
-                    </asp:ListBox>
+                    <asp:ListBox ID="lbPreferencesID" runat="server" Width="100%"></asp:ListBox>
                 </div>
 
                 <br />
@@ -63,7 +62,7 @@
                 <div class="form-group" style="text-align: center;">
                     <asp:Button ID="btnSignUp" runat="server" Text="Sign Up" CssClass="ui-button" OnClick="btnSignUp_Click" />
                 </div>
-     
+
             </form>
         </div>
     </div>
