@@ -30,6 +30,6 @@ nav > div > div > ul > li > form > div > input {
     width: 20%;
 }
 
-.form-control {
-    width: 500px !important;
+.invisibleClass{
+    visibility: hidden;
 }

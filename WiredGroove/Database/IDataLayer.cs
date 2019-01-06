@@ -7,7 +7,7 @@ namespace WiredGroove.Database
 {
     public interface IDataLayer
     {
-
+        bool CheckAccount(string email, string password);
     }
 
     public class DataLayerFactory

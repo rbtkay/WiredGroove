@@ -87,6 +87,8 @@
     <Content Include="Images\RedMic05.jpg" />
     <Content Include="Images\RedStageHD.jpg" />
     <Content Include="Images\Red.jpg" />
+    <Content Include="Scripts\SignIn.Js" />
+    <Content Include="sHomePage.aspx" />
     <Content Include="SignIn.aspx" />
     <Content Include="Styles\custom.css" />
     <Content Include="Styles\jquery-ui.min.css" />
@@ -132,6 +134,13 @@
     </Compile>
     <Compile Include="result.aspx.designer.cs">
       <DependentUpon>result.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="sHomePage.aspx.cs">
+      <DependentUpon>sHomePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sHomePage.aspx.designer.cs">
+      <DependentUpon>sHomePage.aspx</DependentUpon>
     </Compile>
     <Compile Include="SignIn.aspx.cs">
       <DependentUpon>SignIn.aspx</DependentUpon>

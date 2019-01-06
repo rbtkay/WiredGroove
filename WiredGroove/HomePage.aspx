@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div class="bgImages" style="position:fixed; background-image: url('../Images/HomePageBackground.jpg');">
-        <div style="background-color:lightgray; margin-left:10%; margin-top:10%; width: 40%; position:fixed;" class="img-rounded" >
+        <div style="background-color:lightgray; margin-left:10%; margin-top:10%; width: 30%; position:fixed;" class="img-rounded" >
             
             <form runat="server" class="form" style="width: 80%; height:80%; margin:40px;">
                 <div class="form-group">
