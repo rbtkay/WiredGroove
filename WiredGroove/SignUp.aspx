@@ -67,7 +67,7 @@
                 <br />
 
                 <div class="form-group" style="text-align: center;">
-                    <asp:Button ID="btnSignUp" runat="server" Text="Sign Up" CssClass="ui-button" OnClick="btnSignUp_Click" />
+                    <asp:Button ID="btnSignUp" ClientIDMode="Static" runat="server" Text="Sign Up" OnClick="btnSignUp_Click" CssClass="btn btn-primary btn-lg" style="background-color: maroon;"/>
                 </div>
 
             </form>

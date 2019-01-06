@@ -71,6 +71,9 @@ $(document).ready(function () {
             $("#smConfirmPasswordID").text("");
         }
     });
+
+    // Disabling Sign Up based on errors
+    $
 });
 
 

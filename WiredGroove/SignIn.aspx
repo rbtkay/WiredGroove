@@ -26,7 +26,7 @@
                 <br />
                 <asp:Label ID="txtErrID" runat="server" ClientIDMode="Static" class="form-text text-muted text-danger" Style="visibility: hidden" Text="Invalid Email or Password"></asp:Label>
                 <div class="form-group" style="margin-left: 30%;">
-                    <asp:Button ID="btnSignInID" CssClass="ui-button" ClientIDMode="Static" runat="server" Text="Sign In" OnClick="btnSignInID_Click" />
+                    <asp:Button ID="btnSignInID" ClientIDMode="Static" runat="server" Text="Sign In" OnClick="btnSignInID_Click" CssClass="btn btn-primary btn-lg" style="background-color: maroon;"/>
                     <asp:HyperLink ID="hlSignUp" runat="server" Style="margin-left: 30%;" NavigateUrl="~/SignUp.aspx">New to WiredGroove?</asp:HyperLink>
                 </div>
             </form>

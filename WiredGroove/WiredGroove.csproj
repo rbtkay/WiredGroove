@@ -71,6 +71,7 @@
     <Content Include="Bootstrap\css\bootstrap-theme.min.css.map" />
     <Content Include="Bootstrap\css\bootstrap.css.map" />
     <Content Include="Bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Bootstrap\css\font-awesome.min.css" />
     <Content Include="Bootstrap\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Bootstrap\fonts\glyphicons-halflings-regular.woff" />
