@@ -8,6 +8,7 @@ namespace WiredGroove.Database
     public interface IDataLayer
     {
         void InsertAccount(string email, string name, string phone, string password, string dob, string preferences);
+        bool CheckAccount(string email, string password);
     }
 
     public class DataLayerFactory

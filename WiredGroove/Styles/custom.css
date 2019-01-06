@@ -29,3 +29,8 @@ nav > div > div > ul > li > a:hover {
 nav > div > div > ul > li > form > div > input {
     width: 20%;
 }
+
+.invisibleClass{
+    visibility: hidden;
+}
+

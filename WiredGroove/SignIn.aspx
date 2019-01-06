@@ -4,7 +4,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="bgImages" style="position: fixed; background-image: url('../Images/RedMic01.png');">
+
         <div style="background-color: lightgray; margin-left: 10%; margin-top: 10%; width: 30%; position: fixed;" class="img-rounded">
+
 
             <form runat="server" class="form" style="width: 80%; height: 80%; margin: 40px;">
                 <div class="form-group">
@@ -22,9 +24,9 @@
                 </div>
 
                 <br />
-
+                <asp:Label ID="txtErrID" runat="server" ClientIDMode="Static" class="form-text text-muted text-danger" style="visibility: hidden" Text="Invalid Email or Password"></asp:Label>
                 <div class="form-group" style="margin-left: 30%;">
-                    <asp:Button ID="btnSignIn" runat="server" Text="Sign In" CssClass="ui-button" />
+                    <asp:Button ID="btnSignInID" CssClass="ui-button" ClientIDMode="Static" runat="server" Text="Sign In" OnClick="btnSignInID_Click" />
                     <asp:HyperLink ID="hlSignUp" runat="server" Style="margin-left: 30%;" NavigateUrl="~/SignUp.aspx">New to WiredGroove?</asp:HyperLink>
                 </div>
             </form>

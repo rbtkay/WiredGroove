@@ -88,6 +88,8 @@
     <Content Include="Images\RedStageHD.jpg" />
     <Content Include="Images\Red.jpg" />
     <Content Include="Scripts\SignUp.js" />
+    <Content Include="Scripts\SignIn.Js" />
+    <Content Include="sHomePage.aspx" />
     <Content Include="SignIn.aspx" />
     <Content Include="SignUp.aspx" />
     <Content Include="Styles\custom.css" />
@@ -134,6 +136,13 @@
     </Compile>
     <Compile Include="result.aspx.designer.cs">
       <DependentUpon>result.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="sHomePage.aspx.cs">
+      <DependentUpon>sHomePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sHomePage.aspx.designer.cs">
+      <DependentUpon>sHomePage.aspx</DependentUpon>
     </Compile>
     <Compile Include="SignIn.aspx.cs">
       <DependentUpon>SignIn.aspx</DependentUpon>
