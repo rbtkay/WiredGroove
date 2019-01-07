@@ -3,10 +3,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
-
-
-
     <div style="margin-top: 5%">
         <div class="col-sm-2">
             <div class="list-group" id="list-tab" role="tablist">
@@ -20,44 +16,7 @@
             
         </div>
         <div class="col-sm-3" id="list-popular-artist">
-            <%--<div class="row">
-                <div class="col-sm-12">
-                    <div class="media">
-                        <a class="pull-left" href="#">
-                            <img class="media-object dp img-circle" src="http://www.huffmancode.com/img/hardik.jpg" style="width: 100px; height: 100px;">
-                        </a>
-                        <div class="media-body">
-                            <h4 class="media-heading">Hardik Sondagar <small>India</small></h4>
-                            <h5>Software Developer at <a href="http://gridle.in">Gridle.in</a></h5>
-                            <hr style="margin: 8px auto">
-
-                            <span class="label label-default">HTML5/CSS3</span>
-                            <span class="label label-default">jQuery</span>
-                            <span class="label label-info">CakePHP</span>
-                            <span class="label label-default">Android</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="media">
-                        <a class="pull-left" href="#">
-                            <img class="media-object dp img-circle" src="http://www.huffmancode.com/img/hardik.jpg" style="width: 100px; height: 100px;">
-                        </a>
-                        <div class="media-body">
-                            <h4 class="media-heading">Hardik Sondagar <small>India</small></h4>
-                            <h5>Software Developer at <a href="http://gridle.in">Gridle.in</a></h5>
-                            <hr style="margin: 8px auto">
-
-                            <span class="label label-default">HTML5/CSS3</span>
-                            <span class="label label-default">jQuery</span>
-                            <span class="label label-info">CakePHP</span>
-                            <span class="label label-default">Android</span>
-                        </div>
-                    </div>
-                </div>
-            </div>--%>
+           
         </div>
     </div>
 </asp:Content>
