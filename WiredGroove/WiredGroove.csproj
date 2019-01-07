@@ -76,6 +76,7 @@
     <Content Include="Bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Handler\PopularArtistHandler.ashx" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -88,6 +89,7 @@
     <Content Include="Images\RedMic05.jpg" />
     <Content Include="Images\RedStageHD.jpg" />
     <Content Include="Images\Red.jpg" />
+    <Content Include="Scripts\sHomePage.js" />
     <Content Include="Scripts\SignUp.js" />
     <Content Include="Scripts\SignIn.Js" />
     <Content Include="sHomePage.aspx" />
@@ -121,8 +123,12 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\PopularArtist.cs" />
     <Compile Include="Database\DataLayer.cs" />
     <Compile Include="Database\IDataLayer.cs" />
+    <Compile Include="Handler\PopularArtistHandler.ashx.cs">
+      <DependentUpon>PopularArtistHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="HomePage.aspx.cs">
       <DependentUpon>HomePage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
