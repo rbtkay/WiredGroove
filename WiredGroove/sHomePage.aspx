@@ -19,8 +19,8 @@
         <div class="col-sm-7">
             
         </div>
-        <div class="col-sm-3">
-            <div class="row">
+        <div class="col-sm-3" id="list-popular-artist">
+            <%--<div class="row">
                 <div class="col-sm-12">
                     <div class="media">
                         <a class="pull-left" href="#">
@@ -57,7 +57,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>--%>
         </div>
     </div>
 </asp:Content>
