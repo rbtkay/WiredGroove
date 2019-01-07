@@ -21,6 +21,7 @@ namespace WiredGroove
             string name = txtFullNameID.Text;
             string phone = txtPhoneID.Text;
             string password = txtPasswordID.Text;
+            string confirmPassword = txtConfirmPasswordID.Text;
             string dob = txtDoBID.Text;
             string preferences = ddlPreferencesID.Text; // to change this to read from list instead of ddl when genres implemented
 
@@ -28,6 +29,7 @@ namespace WiredGroove
                 !string.IsNullOrEmpty(name) &&
                 !string.IsNullOrEmpty(phone) &&
                 !string.IsNullOrEmpty(password) &&
+                !string.IsNullOrEmpty(confirmPassword) &&
                 !string.IsNullOrEmpty(dob) &&
                 !string.IsNullOrEmpty(preferences))
             {
