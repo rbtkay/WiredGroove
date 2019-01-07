@@ -14,7 +14,7 @@
     function PopulateArtistList(parent, popularArtists) {
         alert("json works");
         $.each(popularArtists, function () {
-            let li = $(`
+            let div = $(`
             <div class="row">
                 <div class="col-sm-12">
                     <div class="media">
@@ -30,7 +30,7 @@
                 </div>
             </div>
             `);
-            li.appendTo(parent);
+            div.appendTo(parent);
         });
     }
 
