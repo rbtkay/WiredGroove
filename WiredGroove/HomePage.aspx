@@ -39,7 +39,7 @@
                 <br />
 
                 <div class="form-group" style="text-align: center">
-                    <asp:Button ID="btnLookupID" runat="server" Text="Lookup Artists" CssClass="ui-button"/>
+                    <asp:Button ID="btnLookupID" ClientIDMode="Static" runat="server" Text="Lookup Artists" CssClass="btn btn-primary btn-lg" style="background-color: maroon;"/>
                 </div>
             </form>
         </div>
