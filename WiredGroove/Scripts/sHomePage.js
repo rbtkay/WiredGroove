@@ -1,7 +1,5 @@
 ﻿$(document).ready(function () {
 
-    alert("javascript works");
-
     $.ajax({
         method: "get",
         url: "Handler/PopularArtistHandler.ashx",
@@ -12,7 +10,6 @@
     });
 
     function PopulateArtistList(parent, popularArtists) {
-        alert("json works");
         $.each(popularArtists, function () {
             let div = $(`
             <div class="row">
