@@ -20,6 +20,7 @@ namespace WiredGroove
             if(DataLayerFactory.Instance.CheckAccount(txtEmailID.Text, txtPasswordID.Text))
             {
                 Response.Redirect("sHomePage.aspx");
+                Session["signInEmail"] = txtEmailID.Text;
             }
             else
             {
