@@ -34,6 +34,7 @@ namespace WiredGroove
                 !string.IsNullOrEmpty(preferences))
             {
                 DataLayerFactory.Instance.InsertAccount(email, name, phone, password, dob, preferences);
+                Session["signInEmail"] = txtEmailID.Text;
                 txtEmailID.Text = "";
                 txtFullNameID.Text = "";
                 txtPhoneID.Text = "";
