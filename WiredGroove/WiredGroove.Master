@@ -68,13 +68,18 @@
                         </form>
                     </li>
 
-                    <%if (string.IsNullOrEmpty(Session["signInEmail"] as string)) %>
-                      <%{ %>
-                    
-                            <li><a href = "SignIn.aspx" > Sign In </a></li>
-                            <li><a href = "SignUp.aspx" > Sign Up </a></li>
-                     <% } %>
-                    
+                    <%if (string.IsNullOrEmpty(Session["signInEmail"] as string)) 
+                    { %>
+
+                    <li><a href="SignIn.aspx">Sign In </a></li>
+                    <li><a href="SignUp.aspx">Sign Up </a></li>
+                    <% } 
+
+                    else
+                    { %>
+                    <li><a href="SignIn.aspx">Welcome</a></li>
+                    <%} %>
+
 
 
 

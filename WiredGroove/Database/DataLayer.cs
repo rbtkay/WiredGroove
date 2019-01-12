@@ -45,6 +45,36 @@ namespace WiredGroove.Database
             }
         }
 
+        public string GetAccountName(string email)
+        {
+            string returnString = string.Empty;
+            SqlConnection conn = new SqlConnection(_connectionString);
+            try
+            {
+                string query = "select Account_FullName from Account_T where Account_Email = @EMAIL";
+                
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@EMAIL", email);
+
+                SqlDataReader sdr = cmd.ExecuteReader();
+                while (sdr.Read())
+                {
+                    returnString = sdr[0] as string;
+                    break;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return returnString;
+        }
+
         public bool CheckAccount(string email, string password)
         {
             bool isAuthentic = false;
@@ -53,7 +83,7 @@ namespace WiredGroove.Database
 
             try
             {
-                string query = "select Account_Email, Account_Password from Account_T";
+                string query = "select Account_Email, Account_FullName, Account_Password from Account_T";
 
                 SqlCommand cmd = new SqlCommand(query, connection);
 
