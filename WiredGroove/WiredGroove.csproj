@@ -89,6 +89,7 @@
     <Content Include="Images\RedMic05.jpg" />
     <Content Include="Images\RedStageHD.jpg" />
     <Content Include="Images\Red.jpg" />
+    <Content Include="Scripts\LoggedInHome.js" />
     <Content Include="Scripts\sHomePage.js" />
     <Content Include="Scripts\SignUp.js" />
     <Content Include="Scripts\SignIn.Js" />
@@ -123,7 +124,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Event.cs" />
     <Compile Include="Classes\PopularArtist.cs" />
+    <Compile Include="Classes\Test.cs" />
     <Compile Include="Database\DataLayer.cs" />
     <Compile Include="Database\IDataLayer.cs" />
     <Compile Include="Handler\PopularArtistHandler.ashx.cs">

@@ -11,14 +11,9 @@
     <link rel="stylesheet" href="~/Styles/jquery-ui.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <%--<link rel="stylesheet" href="~/Bootstrap/css/font-awesome.min.css"  /> Unable to load for some reason--%>
-    <script type="text/javascript" src="./Scripts/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="./Scripts/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="./Bootstrap/js/bootstrap.js"></script>
-    <script type="text/javascript" src="./Scripts/HomePage.js"></script>
-    <script type="text/javascript" src="./Scripts/SignUp.js"></script>
-    <script type="text/javascript" src="./Bootstrap/js/bootstrap.js"></script>
-    <script type="text/javascript" src="Scripts/SignIn.Js"></script>
-    <script type="text/javascript" src="Scripts/sHomePage.js"></script>
+
+
+    <%--<script type="text/javascript" src="Scripts/sHomePage.js"></script>--%>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <asp:ContentPlaceHolder ID="head" runat="server">
@@ -69,12 +64,12 @@
                     </li>
 
                     <%if (string.IsNullOrEmpty(Session["signInEmail"] as string)) %>
-                      <%{ %>
-                    
-                            <li><a href = "SignIn.aspx" > Sign In </a></li>
-                            <li><a href = "SignUp.aspx" > Sign Up </a></li>
-                     <% } %>
-                    
+                    <%{ %>
+
+                    <li><a href="SignIn.aspx">Sign In </a></li>
+                    <li><a href="SignUp.aspx">Sign Up </a></li>
+                    <% } %>
+
 
 
 
@@ -98,6 +93,15 @@
     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
     </asp:ContentPlaceHolder>
 
+
+    <script type="text/javascript" src="./Scripts/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="./Scripts/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="./Bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="./Scripts/HomePage.js"></script>
+    <script type="text/javascript" src="./Scripts/SignUp.js"></script>
+    <script type="text/javascript" src="./Bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="./Scripts/SignIn.Js"></script>
+    <script type="text/javascript" src="./Scripts/LoggedInHome.Js"></script>
     <%--</form>--%>
 </body>
 </html>

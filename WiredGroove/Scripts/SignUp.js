@@ -73,7 +73,6 @@ $(document).ready(function () {
     });
 
     // Disabling Sign Up based on errors
-    $
 });
 
 
