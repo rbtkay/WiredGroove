@@ -59,6 +59,7 @@
                     </li>--%>
                 </ul>
                 <ul class="nav navbar-nav navbar-right" style="margin-right: 1%;">
+                    <li><a href="BecomeMusician.aspx" id="aBecome">Become a Musician</a></li>
                     <li>
                         <form class="navbar-form navbar-left">
                             <div class="form-group">
@@ -68,16 +69,26 @@
                         </form>
                     </li>
 
-                    <%if (string.IsNullOrEmpty(Session["signInEmail"] as string)) 
-                    { %>
+                     <%if (string.IsNullOrEmpty(Session["signInEmail"] as string))
+                        { %>
 
                     <li><a href="SignIn.aspx">Sign In </a></li>
                     <li><a href="SignUp.aspx">Sign Up </a></li>
-                    <% } 
+                    <% }
 
-                    else
-                    { %>
-                    <li><a href="SignIn.aspx">Welcome</a></li>
+                        else
+                        { %>
+                    <li><a href="Inbox.aspx">Inbox</a></li>
+                    
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" runat="server"  id="namePlaceHolder"><span class="caret" style="color: white;"></span></a>
+                        <ul class="dropdown-menu" runat="server">
+                            <li><a href="Settings.aspx">Account Settings</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="Logout.aspx">Logout</a></li>
+                        </ul>
+                    </li>
+
                     <%} %>
 
 

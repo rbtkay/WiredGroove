@@ -26,6 +26,18 @@ nav > div > div > ul > li > a:hover {
     color: maroon;
 }
 
+#aBecome {
+    font-size: larger;
+    font-weight: bold;
+    color: green;
+    text-decoration: underline;
+}
+
+#aBecome:hover {
+    background-color: green;
+    color: white;
+}
+
 nav > div > div > ul > li > form > div > input {
     width: 20%;
 }

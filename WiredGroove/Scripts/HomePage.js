@@ -1,6 +1,4 @@
 ﻿$(document).ready(function () {
     $("#txtCalendarID").datepicker();
-    $("#liofA").click(function () {
-        alert("click");
-    });
+    $("#namePlaceHolder").dropdown(); // << for master
 });
