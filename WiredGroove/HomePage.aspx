@@ -9,7 +9,7 @@
             
             <form runat="server" class="form" style="width: 80%; height:80%; margin:40px;">
                 <div class="form-group">
-                    <h1>Find Artists Around You</h1>
+                    <h1 style="color: maroon;">Find Artists Around You</h1>
                 </div>
                 <div class="form-group">
                     <label for="txtLocationID">Where?</label>
@@ -32,7 +32,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="txtArtistNameID">Artist Name:</label>
+                    <label for="txtArtistNameID">Who?</label>
                     <asp:TextBox ID="txtArtistNameID" runat="server" class="form-control"></asp:TextBox>
                 </div>
 

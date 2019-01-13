@@ -21,7 +21,7 @@
 </head>
 <body>
     <nav class="navbar navbar-fixed-top masterTopBar">
-        <div class="container-fluid" id="headerBar" style="margin-top: 12px">
+        <div class="container-fluid" id="headerBar" style="">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <%--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -71,13 +71,20 @@
                     <% }
 
                         else
-                        { %>
+                        {
+                            if (string.IsNullOrEmpty(Session["musician"] as string))
+                            { %>
                     <li><a href="BecomeArtist.aspx" id="aBecome">Become an Artist</a></li>
+                    <%      }
+                            else
+                            { %>
+                    <li><a href="EnrolledJobs.aspx" id="enrolledJobs">Enrolled Jobs</a></li>
+                          <%} %>
                     <li><a href="Inbox.aspx">Inbox</a></li>
 
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" runat="server" id="namePlaceHolder"><span class="caret" style="color: white;"></span></a>
-                        <ul class="dropdown-menu" runat="server">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" runat="server" id="namePlaceHolder"></a>
+                        <ul class="dropdown-menu" runat="server" style="width: 100%;">
                             <li><a href="Settings.aspx">Account Settings</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="Logout.aspx">Logout</a></li>
@@ -105,16 +112,14 @@
 
     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
     </asp:ContentPlaceHolder>
-
-
     <script type="text/javascript" src="./Scripts/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="./Scripts/jquery-ui.min.js"></script>
     <script type="text/javascript" src="./Bootstrap/js/bootstrap.js"></script>
     <script type="text/javascript" src="./Scripts/HomePage.js"></script>
     <script type="text/javascript" src="./Scripts/SignUp.js"></script>
-    <script type="text/javascript" src="./Bootstrap/js/bootstrap.js"></script>
     <script type="text/javascript" src="./Scripts/SignIn.Js"></script>
-    <script type="text/javascript" src="./Scripts/LoggedInHome.Js"></script>
+    <script type="text/javascript" src="./Scripts/LoggedInHome.js"></script>
+
     <%--</form>--%>
 </body>
 </html>
