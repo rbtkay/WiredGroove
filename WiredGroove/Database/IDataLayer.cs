@@ -14,6 +14,7 @@ namespace WiredGroove.Database
         List<PopularArtist> GetPopularArtist();
         bool IsMusician(string email);
         List<Event> GetJobOffers();
+        void InsertArtist(string email, string name, string instrument, string genre, string portfolio, string address, string band, string additionalInfo);
     }
 
     public class DataLayerFactory
@@ -31,7 +32,7 @@ namespace WiredGroove.Database
                     {
                         if (_instance == null)
                         {
-                            string connectionString = "Data Source=LAPTOP-HI71AFPV;Initial Catalog=WiredGrooveDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                            string connectionString = "Data Source=COCOONEDTOWER;Initial Catalog=WiredGrooveDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
                             _instance = new DataLayer(connectionString);
                         }
                     }

@@ -1,13 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/WiredGroove.Master" AutoEventWireup="true" CodeBehind="BecomeArtist.aspx.cs" Inherits="WiredGroove.BecomeArtist" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="bgImages" style="position: fixed; background-image:url('../Images/RedStageHD.jpg');"></div>
+    <div class="bgImages" style="position: fixed; background-image: url('../Images/RedStageHD.jpg');"></div>
 
     <div style="background-color: lightgray; margin-left: 35%; margin-top: 7%; width: 30%; position: absolute;" class="img-rounded">
-        <form runat="server" class="form" style="width:80%; height: 80%; margin: auto;">
+        <form runat="server" class="form" style="width: 80%; height: 80%; margin: auto;">
             <div class="form-group">
-                <h1 style="font-style:italic; text-align: center;">...Let There Be Sound...</h1>
+                <h1 style="font-style: italic; text-align: center; color: maroon;">...Let There Be Sound...</h1>
             </div>
 
             <div class="form-group">
@@ -30,7 +31,9 @@
 
             <div class="form-group">
                 <label for="txtGenre">Genre</label>
-                <asp:TextBox ID="txtGenre" ClientIDMode="Static" runat="server" CssClass="form-control"></asp:TextBox>
+                <asp:DropDownList ID="ddlGenre" ClientIDMode="Static" runat="server" CssClass="form-control">
+                </asp:DropDownList>
+                <asp:ListBox ID="lbGenre" ClientIDMode="Static" runat="server" CssClass="form-control"></asp:ListBox>
                 <small id="" class="form-text text-muted" style="color: red;"></small>
             </div>
 
@@ -56,6 +59,11 @@
                 <label for="txtAdditionalInfo">Additional Info</label>
                 <asp:TextBox ID="txtAdditionalInfo" ClientIDMode="Static" runat="server" CssClass="form-control" TextMode="MultiLine"></asp:TextBox>
                 <small id="" class="form-text text-muted" style="color: red;"></small>
+            </div>
+
+            <div style="text-align: center;">
+
+
             </div>
         </form>
     </div>

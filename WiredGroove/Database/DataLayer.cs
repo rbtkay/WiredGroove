@@ -110,6 +110,42 @@ namespace WiredGroove.Database
             return isAuthentic;
         }
 
+        public bool InsertArtist(string email, string name, string instrument, string genre, string portfolio, string address, string band, string additionalInfo)
+        {
+            bool status;
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string query = "insert into Artist_T values (@EMAIL, @NAME, @INSTRUMENT, @GENRE, @PORTFOLIO, @ADDRESS, @BAND, @ADDITIONALINFO)";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@EMAIL", email);
+                    cmd.Parameters.AddWithValue("@NAME", name);
+                    cmd.Parameters.AddWithValue("@INSTRUMENT", instrument);
+                    cmd.Parameters.AddWithValue("@PORTFOLIO", portfolio);
+                    cmd.Parameters.AddWithValue("@ADDRESS", address);
+                    cmd.Parameters.AddWithValue("@BAND", band);
+                    cmd.Parameters.AddWithValue("@ADDITIONALINFO", additionalInfo);
+
+                    cmd.ExecuteNonQuery();
+                    status = true;
+                }
+                catch (Exception ex)
+                {
+                    status = false;
+                    throw ex;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+
+            return status;
+
+        }
+
         public bool IsMusician(string email)
         {
             bool isMusician = false;

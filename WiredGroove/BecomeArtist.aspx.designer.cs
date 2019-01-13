@@ -40,13 +40,22 @@ namespace WiredGroove {
         protected global::System.Web.UI.WebControls.TextBox txtInstrument;
         
         /// <summary>
-        /// txtGenre control.
+        /// ddlGenre control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtGenre;
+        protected global::System.Web.UI.WebControls.DropDownList ddlGenre;
+        
+        /// <summary>
+        /// lbGenre control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox lbGenre;
         
         /// <summary>
         /// txtPortfolio control.

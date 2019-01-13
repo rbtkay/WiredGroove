@@ -15,7 +15,10 @@ namespace WiredGroove
             if (!string.IsNullOrEmpty(Session["signInEmail"] as string))
             {
                 namePlaceHolder.InnerText = DataLayerFactory.Instance.GetAccountName(Session["signInEmail"] as string);
+                namePlaceHolder.InnerHtml += "<span class=\"caret\" style=\"color: white; \"></span>";
             }
         }
+
+        // 
     }
 }
