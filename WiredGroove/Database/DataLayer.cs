@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data.SqlClient;
 using WiredGroove.Classes;
+using System.IO;
 
 namespace WiredGroove.Database
 {
@@ -18,6 +19,8 @@ namespace WiredGroove.Database
 
         public void InsertAccount(string email, string name, string phone, string password, string dob, string preferences)
         {
+            
+            string emailAccount = email;
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
                 try
@@ -33,6 +36,8 @@ namespace WiredGroove.Database
                     cmd.Parameters.AddWithValue("@DOB", dob);
                     cmd.Parameters.AddWithValue("@PREFERENCES", preferences);
                     cmd.ExecuteNonQuery();
+
+
                 }
                 catch (Exception e)
                 {
@@ -41,8 +46,39 @@ namespace WiredGroove.Database
                 finally
                 {
                     conn.Close();
+
                 }
             }
+        }
+
+        public void InsertPicture()
+        {
+            string imgPath = "../Images/BasicAccount.png";
+            SqlConnection connection = new SqlConnection(_connectionString);
+            connection.Open();
+
+            try
+            {
+                string query1 = "update Account_T " +
+                                        "set Account_Picture = " +
+                                        "(SELECT BulkColumn " +
+                                        "FROM Openrowset(Bulk 'D:/AUST/Web Prog/WiredGroove/WiredGroove/Images/BasicAccount.png', Single_Blob) as img)" +
+                                        "where Account_Email = @email";
+
+                SqlCommand cmd = new SqlCommand(query1, connection);
+                //cmd.Parameters.AddWithValue("@imgPath", imgPath);
+                cmd.Parameters.AddWithValue("@email", "Jalleh@gmail.com");
+                cmd.ExecuteNonQuery();
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            
         }
 
         public string GetAccountName(string email)

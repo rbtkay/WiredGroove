@@ -85,6 +85,7 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="Images\BasicAccount.png" />
     <Content Include="Images\RedMic.png" />
     <Content Include="Images\RedMic01.png" />
     <Content Include="Images\RedMic05.jpg" />
