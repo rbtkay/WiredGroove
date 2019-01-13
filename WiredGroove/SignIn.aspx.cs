@@ -17,9 +17,14 @@ namespace WiredGroove
 
         protected void btnSignInID_Click(object sender, EventArgs e)
         {
-            if(DataLayerFactory.Instance.CheckAccount(txtEmailID.Text, txtPasswordID.Text))
+            if (DataLayerFactory.Instance.CheckAccount(txtEmailID.Text, txtPasswordID.Text))
             {
                 Session["signInEmail"] = txtEmailID.Text;
+
+                if (DataLayerFactory.Instance.IsMusician(txtEmailID.Text))
+                {
+                    Session["musician"] = "musician";
+                }
                 Response.Redirect("sHomePage.aspx");
             }
             else

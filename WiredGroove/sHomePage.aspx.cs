@@ -13,8 +13,19 @@ namespace WiredGroove
 {
     public partial class sHomePage : System.Web.UI.Page
     {
+        public static string emailLogIn;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (String.IsNullOrEmpty(Session["signInEmail"] as string))
+            {
+                Response.Redirect("SignIn.aspx");
+            }
+            else
+            {
+                if (!(String.IsNullOrEmpty(Session["musician"] as string)))
+                    hiddenField.Value = Session["musician"].ToString();
+            }
+
 
         }
 
@@ -31,5 +42,16 @@ namespace WiredGroove
             //return Json(new { success = true, employers, agencies }, JsonRequestBehavior.AllowGet);
         }
 
+        [WebMethod]
+        public static List<Event> GetListJobs()
+        {
+            List<Event> artistList = DataLayerFactory.Instance.GetJobOffers();
+            return artistList;
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

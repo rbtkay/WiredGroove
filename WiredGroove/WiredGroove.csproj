@@ -124,7 +124,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Event.cs" />
     <Compile Include="Classes\PopularArtist.cs" />
+    <Compile Include="Classes\Test.cs" />
     <Compile Include="Database\DataLayer.cs" />
     <Compile Include="Database\IDataLayer.cs" />
     <Compile Include="Handler\PopularArtistHandler.ashx.cs">

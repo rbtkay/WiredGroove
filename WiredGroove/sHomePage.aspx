@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <form>
+    <form runat="server">
         <div style="margin-top: 5%">
             <div class="col-sm-2">
                 <div class="list-group" id="list-tab" role="tablist">
@@ -14,9 +14,13 @@
                 </div>
             </div>
             <div class="col-sm-7">
+                <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
+                <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
             </div>
             <div class="col-sm-3" id="list-popular-artist">
             </div>
         </div>
+
+        <asp:HiddenField ID="hiddenField" ClientIDMode="static" runat="server" />
     </form>
 </asp:Content>
