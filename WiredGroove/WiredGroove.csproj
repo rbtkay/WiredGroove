@@ -89,6 +89,7 @@
     <Content Include="Images\RedMic05.jpg" />
     <Content Include="Images\RedStageHD.jpg" />
     <Content Include="Images\Red.jpg" />
+    <Content Include="Scripts\LoggedInHome.js" />
     <Content Include="Scripts\sHomePage.js" />
     <Content Include="Scripts\SignUp.js" />
     <Content Include="Scripts\SignIn.Js" />
