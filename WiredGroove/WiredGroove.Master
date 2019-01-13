@@ -74,7 +74,7 @@
                         {
                             if (string.IsNullOrEmpty(Session["musician"] as string))
                             { %>
-                    <li><a href="BecomeArtist.aspx" id="aBecome">Become an Artist</a></li>
+                    <li><a href="Become.aspx" id="aBecome">Become an Artist</a></li>
                     <%      }
                             else
                             { %>
