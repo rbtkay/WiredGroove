@@ -12,6 +12,7 @@ namespace WiredGroove.Database
         bool CheckAccount(string email, string password);
         string GetAccountName(string email);
         List<PopularArtist> GetPopularArtist();
+        void InsertArtist(string email, string name, string instrument, string genre, string portfolio, string address, string band, string additionalInfo);
     }
 
     public class DataLayerFactory

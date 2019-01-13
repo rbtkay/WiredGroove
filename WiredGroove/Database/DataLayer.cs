@@ -148,5 +148,10 @@ namespace WiredGroove.Database
             return listArtist;
         }
 
+        public void InsertArtist(string email, string name, string instrument, string genre, string portfolio, string address, string band, string additionalInfo)
+        {
+
+        }
+
     }
 }
