@@ -19,7 +19,7 @@ namespace WiredGroove.Database
 
         public void InsertAccount(string email, string name, string phone, string password, string dob, string preferences)
         {
-            
+
             string emailAccount = email;
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
@@ -46,14 +46,14 @@ namespace WiredGroove.Database
                 finally
                 {
                     conn.Close();
-
+                    InsertPicture(emailAccount);
                 }
             }
         }
 
-        public void InsertPicture()
+        public void InsertPicture(string accountEmail)
         {
-            string imgPath = "../Images/BasicAccount.png";
+            //string imgPath = "../Images/BasicAccount.png";
             SqlConnection connection = new SqlConnection(_connectionString);
             connection.Open();
 
@@ -67,7 +67,7 @@ namespace WiredGroove.Database
 
                 SqlCommand cmd = new SqlCommand(query1, connection);
                 //cmd.Parameters.AddWithValue("@imgPath", imgPath);
-                cmd.Parameters.AddWithValue("@email", "Jalleh@gmail.com");
+                cmd.Parameters.AddWithValue("@email", accountEmail);
                 cmd.ExecuteNonQuery();
             }
             catch(Exception e)

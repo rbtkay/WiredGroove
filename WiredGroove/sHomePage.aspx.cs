@@ -51,7 +51,7 @@ namespace WiredGroove
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            DataLayerFactory.Instance.InsertPicture();
+            //DataLayerFactory.Instance.InsertPicture();
         }
     }
 }

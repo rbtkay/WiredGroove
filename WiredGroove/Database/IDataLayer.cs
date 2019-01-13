@@ -14,7 +14,7 @@ namespace WiredGroove.Database
         List<PopularArtist> GetPopularArtist();
         bool IsMusician(string email);
         List<Event> GetJobOffers();
-        void InsertPicture();
+        void InsertPicture(string accountEmail);
     }
 
     public class DataLayerFactory
