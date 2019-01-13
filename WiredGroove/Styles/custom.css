@@ -1,6 +1,6 @@
 ﻿.masterTopBar {
     background-color: maroon;
-    height: 8%;
+    
 }
 
 
@@ -26,16 +26,15 @@ nav > div > div > ul > li > a:hover {
     color: maroon;
 }
 
-#aBecome {
+#aBecome, #enrolledJobs {
     font-size: larger;
     font-weight: bold;
-    color: green;
-    text-decoration: underline;
+    color: gold;
 }
 
-#aBecome:hover {
-    background-color: green;
-    color: white;
+#aBecome:hover, #enrolledJobs:hover {
+    background-color: gold;
+    color: red;
 }
 
 nav > div > div > ul > li > form > div > input {

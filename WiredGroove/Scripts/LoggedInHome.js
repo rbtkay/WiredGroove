@@ -73,7 +73,7 @@
 
     function PopulateArtistList(parent, popularArtists) {
         $.each(popularArtists.d, function () {
-            alert("counting");
+            //alert("counting");
             let div = $(`
             <div class="row">
                 <div class="col-sm-12">
