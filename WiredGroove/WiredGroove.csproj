@@ -91,6 +91,7 @@
     <Content Include="Images\RedStageHD.jpg" />
     <Content Include="Images\Red.jpg" />
     <Content Include="Logout.aspx" />
+    <Content Include="Scripts\LoggedInHome.js" />
     <Content Include="Scripts\sHomePage.js" />
     <Content Include="Scripts\SignUp.js" />
     <Content Include="Scripts\SignIn.Js" />
@@ -132,7 +133,9 @@
     <Compile Include="BecomeArtist.aspx.designer.cs">
       <DependentUpon>BecomeArtist.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Classes\Event.cs" />
     <Compile Include="Classes\PopularArtist.cs" />
+    <Compile Include="Classes\Test.cs" />
     <Compile Include="Database\DataLayer.cs" />
     <Compile Include="Database\IDataLayer.cs" />
     <Compile Include="Handler\PopularArtistHandler.ashx.cs">
