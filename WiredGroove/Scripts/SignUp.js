@@ -55,6 +55,7 @@ $(document).ready(function () {
             $("#smPasswordID").text("Input valid password (min. 10 chars, 1 lower-case, 1 upper-case, 1 digit, 1 special character)");
         }
         else {
+            $("#hiddenPass").text($("#txtPasswordID").val());
             $("#smPasswordID").text("");
         }
     });
@@ -68,10 +69,14 @@ $(document).ready(function () {
             $("#smConfirmPasswordID").text("Passwords do not match!");
         }
         else {
+            $("#hiddenPass").text($("#txtPasswordID").val());
             $("#smConfirmPasswordID").text("");
         }
     });
-    // Disabling Sign Up based on errors
+
+    // Keeping track of password
+    $("#txtPasswordID").val($("#hiddenPass").text());
+    $("#txtConfirmPasswordID").val($("#hiddenPass").text());
 });
 
 

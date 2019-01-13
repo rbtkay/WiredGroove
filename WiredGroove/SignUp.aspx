@@ -5,12 +5,12 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div class="bgImages" style="position: fixed; background-image: url('../Images/Red.jpg');"></div>
-    
+
     <div style="background-color: lightgray; margin-left: 35%; margin-top: 7%; width: 30%; position: absolute;" class="img-rounded">
 
         <form runat="server" class="form" style="width: 80%; height: 80%; margin: auto;">
             <div class="form-group">
-                <h1>Join WiredGroove!</h1>
+                <h1 style="font-weight: bold; color:maroon;">Join WiredGroove!</h1>
             </div>
 
             <div class="form-group">
@@ -27,7 +27,7 @@
 
             <div class="form-group">
                 <label for="txtPasswordID">Password</label>
-                <asp:TextBox ID="txtPasswordID" ClientIDMode="Static" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
+                <asp:TextBox ID="txtPasswordID" ClientIDMode="Static" runat="server" CssClass="form-control" TextMode="Password" OnTextChanged="txtPasswordID_TextChanged"></asp:TextBox>
                 <small id="smPasswordID" class="form-text text-muted" style="color: red;"></small>
 
             </div>
@@ -53,16 +53,26 @@
 
             <div class="form-group">
                 <label for="ddlPreferencesID">Tell us what you like</label>
-                <asp:DropDownList ID="ddlPreferencesID" runat="server" CssClass="form-control">
-                    <asp:ListItem Selected="True" Value="--Select Genre--"></asp:ListItem>
+                <asp:DropDownList ID="ddlPreferencesID" runat="server" CssClass="form-control" Style="width: 50%;" AutoPostBack="True" OnSelectedIndexChanged="ddlPreferencesID_SelectedIndexChanged">
+                    <asp:ListItem Selected="True" Value="--Select Genre--" Text=" -- Select Genre -- "></asp:ListItem>
+                    <asp:ListItem Value="Rock" Text="Rock"></asp:ListItem>
+                    <asp:ListItem Value="Techno" Text="Techno"></asp:ListItem>
+                    <asp:ListItem Value="Rap" Text="Rap"></asp:ListItem>
+                    <asp:ListItem Value="Classical" Text="Classical"></asp:ListItem>
+                    <asp:ListItem Value="Metal" Text="Metal"></asp:ListItem>
+                    <asp:ListItem Value="Arabic" Text="Arabic"></asp:ListItem>
+                    <asp:ListItem Value="French" Text="French"></asp:ListItem>
                 </asp:DropDownList>
+
+
                 <small id="ddlGenreHelperID" class="form-text text-muted">This will help us filter search results</small>
             </div>
 
             <div class="form-group">
                 <label for="lbPreferencesID">Preferences</label>
                 <br />
-                <asp:ListBox ID="lbPreferencesID" runat="server" Width="100%"></asp:ListBox>
+                <asp:ListBox ID="lbPreferencesID" runat="server" CssClass="form-control"></asp:ListBox>
+                <asp:Button ID="btnRemove" runat="server" CssClass="btn btn-primary" Style="background-color: maroon; font-weight: bold; float:right;" Text="-" OnClick="btnRemove_Click" />
 
             </div>
 
@@ -72,6 +82,7 @@
                 <asp:Button ID="btnSignUp" ClientIDMode="Static" runat="server" Text="Sign Up" OnClick="btnSignUp_Click" CssClass="btn btn-primary btn-lg" Style="background-color: maroon;" />
             </div>
 
+            <small id="hiddenPass" runat="server" ClientIDMode="Static" class="hidden"></small>
 
         </form>
     </div>
