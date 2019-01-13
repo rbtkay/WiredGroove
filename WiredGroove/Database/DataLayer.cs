@@ -123,6 +123,7 @@ namespace WiredGroove.Database
                     cmd.Parameters.AddWithValue("@EMAIL", email);
                     cmd.Parameters.AddWithValue("@NAME", name);
                     cmd.Parameters.AddWithValue("@INSTRUMENT", instrument);
+                    cmd.Parameters.AddWithValue("@GENRE", genre);
                     cmd.Parameters.AddWithValue("@PORTFOLIO", portfolio);
                     cmd.Parameters.AddWithValue("@ADDRESS", address);
                     cmd.Parameters.AddWithValue("@BAND", band);
