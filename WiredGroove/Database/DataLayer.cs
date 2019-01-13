@@ -62,7 +62,7 @@ namespace WiredGroove.Database
                 string query1 = "update Account_T " +
                                         "set Account_Picture = " +
                                         "(SELECT BulkColumn " +
-                                        "FROM Openrowset(Bulk 'D:/AUST/Web Prog/WiredGroove/WiredGroove/Images/BasicAccount.png', Single_Blob) as img)" +
+                                        "FROM Openrowset(Bulk 'D:/Dev/WiredGroove/WiredGroove/Images/BasicAccount.png', Single_Blob) as img)" +
                                         "where Account_Email = @email";
 
                 SqlCommand cmd = new SqlCommand(query1, connection);
@@ -70,7 +70,7 @@ namespace WiredGroove.Database
                 cmd.Parameters.AddWithValue("@email", accountEmail);
                 cmd.ExecuteNonQuery();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw e;
             }
@@ -78,7 +78,7 @@ namespace WiredGroove.Database
             {
                 connection.Close();
             }
-            
+
         }
 
         public string GetAccountName(string email)
@@ -294,19 +294,24 @@ namespace WiredGroove.Database
 
         public string GetPictureArtist(string artistEmail)
         {
-            string imgString;
+            string imgString = string.Empty;
             SqlConnection connection = new SqlConnection(_connectionString);
             connection.Open();
 
             try
             {
-                string query = "select Account_Picture from Account_T where Account_Email = @email";
+                string query = "select Account_Picture from Account_T where Account_Email = @email and Account_Picture is NOT NULL";
 
                 SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@email", artistEmail);
 
-                byte[] bytes = (byte[])cmd.ExecuteScalar();
-                imgString = "data:Image/png;base64," + Convert.ToBase64String(bytes);
+                byte[] bytes;
+
+                if (cmd.ExecuteScalar() != null)
+                {
+                    bytes = (byte[])cmd.ExecuteScalar();
+                    imgString = "data:Image/png;base64," + Convert.ToBase64String(bytes);
+                }
 
 
                 //while (reader.Read())

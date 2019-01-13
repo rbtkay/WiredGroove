@@ -46,6 +46,7 @@ namespace WiredGroove
             {
                 if (DataLayerFactory.Instance.InsertArtist(email, name, instrument, genre, portfolio, address, band, additionalInfo))
                 {
+                    Session["musician"] = "musician";
                     Response.Redirect("sHomePage.aspx");
                 }
                 else
