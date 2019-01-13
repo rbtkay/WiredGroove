@@ -1,6 +1,5 @@
 ﻿$(document).ready(function () {
 
-    alert("damn");
     // $.ajax({
     //     type: "Get",
     //     url: "sHomePage.aspx/GetArtist",
@@ -52,7 +51,6 @@
     // });
     function PopulateJobList(parent, popularArtists) {
         $.each(popularArtists.d, function () {
-            alert("counting");
             let div = $(`
             <div class="row">
                 <div class="col-sm-12">
