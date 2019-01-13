@@ -10,6 +10,7 @@ namespace WiredGroove.Database
     {
         void InsertAccount(string email, string name, string phone, string password, string dob, string preferences);
         bool CheckAccount(string email, string password);
+        string GetAccountName(string email);
         List<PopularArtist> GetPopularArtist();
         bool IsMusician(string email);
         List<Event> GetJobOffers();

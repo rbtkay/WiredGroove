@@ -24,12 +24,12 @@
         <div class="container-fluid" id="headerBar" style="margin-top: 12px">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <%--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                </button>
+                </button>--%>
                 <a class="navbar-brand" href="HomePage.aspx" style="margin-top: -12px">
                     <img src="Images/Logo.png" style="max-height: 200%" />
                 </a>
@@ -63,15 +63,28 @@
                         </form>
                     </li>
 
-                    <%if (string.IsNullOrEmpty(Session["signInEmail"] as string)) %>
-                    <%{ %>
+                    <%if (string.IsNullOrEmpty(Session["signInEmail"] as string))
+                        { %>
 
-                    <li><a href="SignIn.aspx">Sign In </a></li>
-                    <li><a href="SignUp.aspx">Sign Up </a></li>
-                    <% } %>
+                    <li><a href="SignIn.aspx">Log In</a></li>
+                    <li><a href="SignUp.aspx">Sign Up</a></li>
+                    <% }
 
+                        else
+                        { %>
+                    <li><a href="BecomeArtist.aspx" id="aBecome">Become an Artist</a></li>
+                    <li><a href="Inbox.aspx">Inbox</a></li>
 
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" runat="server" id="namePlaceHolder"><span class="caret" style="color: white;"></span></a>
+                        <ul class="dropdown-menu" runat="server">
+                            <li><a href="Settings.aspx">Account Settings</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="Logout.aspx">Logout</a></li>
+                        </ul>
+                    </li>
 
+                    <%} %>
 
                     <%--<li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>

@@ -7,14 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace WiredGroove
 {
-    public partial class HomePage : System.Web.UI.Page
+    public partial class BecomeArtist : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(Session["signInEmail"] as string))
-            {
-                Response.Redirect("sHomePage.aspx");
-            }
+
         }
     }
 }

@@ -67,6 +67,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BecomeArtist.aspx" />
     <Content Include="Bootstrap\css\bootstrap-theme.css.map" />
     <Content Include="Bootstrap\css\bootstrap-theme.min.css.map" />
     <Content Include="Bootstrap\css\bootstrap.css.map" />
@@ -89,6 +90,7 @@
     <Content Include="Images\RedMic05.jpg" />
     <Content Include="Images\RedStageHD.jpg" />
     <Content Include="Images\Red.jpg" />
+    <Content Include="Logout.aspx" />
     <Content Include="Scripts\LoggedInHome.js" />
     <Content Include="Scripts\sHomePage.js" />
     <Content Include="Scripts\SignUp.js" />
@@ -124,6 +126,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BecomeArtist.aspx.cs">
+      <DependentUpon>BecomeArtist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BecomeArtist.aspx.designer.cs">
+      <DependentUpon>BecomeArtist.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Classes\Event.cs" />
     <Compile Include="Classes\PopularArtist.cs" />
     <Compile Include="Classes\Test.cs" />
@@ -138,6 +147,13 @@
     </Compile>
     <Compile Include="HomePage.aspx.designer.cs">
       <DependentUpon>HomePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="result.aspx.cs">
