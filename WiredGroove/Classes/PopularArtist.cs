@@ -11,5 +11,6 @@ namespace WiredGroove.Classes
         public string artistInstrument { get; set; }
         public string artistGenre { get; set; }
         public string artistBand { get; set; }
+        public string artistPicture { get; set; }
     }
 }

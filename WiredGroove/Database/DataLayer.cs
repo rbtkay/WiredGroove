@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data.SqlClient;
 using WiredGroove.Classes;
+using System.IO;
 
 namespace WiredGroove.Database
 {
@@ -18,6 +19,8 @@ namespace WiredGroove.Database
 
         public void InsertAccount(string email, string name, string phone, string password, string dob, string preferences)
         {
+
+            string emailAccount = email;
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
                 try
@@ -33,6 +36,8 @@ namespace WiredGroove.Database
                     cmd.Parameters.AddWithValue("@DOB", dob);
                     cmd.Parameters.AddWithValue("@PREFERENCES", preferences);
                     cmd.ExecuteNonQuery();
+
+
                 }
                 catch (Exception e)
                 {
@@ -41,8 +46,39 @@ namespace WiredGroove.Database
                 finally
                 {
                     conn.Close();
+                    InsertPicture(emailAccount);
                 }
             }
+        }
+
+        public void InsertPicture(string accountEmail)
+        {
+            //string imgPath = "../Images/BasicAccount.png";
+            SqlConnection connection = new SqlConnection(_connectionString);
+            connection.Open();
+
+            try
+            {
+                string query1 = "update Account_T " +
+                                        "set Account_Picture = " +
+                                        "(SELECT BulkColumn " +
+                                        "FROM Openrowset(Bulk 'D:/AUST/Web Prog/WiredGroove/WiredGroove/Images/BasicAccount.png', Single_Blob) as img)" +
+                                        "where Account_Email = @email";
+
+                SqlCommand cmd = new SqlCommand(query1, connection);
+                //cmd.Parameters.AddWithValue("@imgPath", imgPath);
+                cmd.Parameters.AddWithValue("@email", accountEmail);
+                cmd.ExecuteNonQuery();
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            
         }
 
         public string GetAccountName(string email)
@@ -52,7 +88,7 @@ namespace WiredGroove.Database
             try
             {
                 string query = "select Account_FullName from Account_T where Account_Email = @EMAIL";
-                
+
                 conn.Open();
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@EMAIL", email);
@@ -193,7 +229,7 @@ namespace WiredGroove.Database
 
             try
             {
-                string query = "select Artist_Name, Artist_Instrument, Artist_Genre, Artist_Band from Artist_T";
+                string query = "select Account_Email, Artist_Name, Artist_Instrument, Artist_Genre, Artist_Band from Artist_T";
 
                 SqlCommand cmd = new SqlCommand(query, connection);
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -205,6 +241,7 @@ namespace WiredGroove.Database
                     artist.artistInstrument = reader["Artist_Instrument"].ToString();
                     artist.artistGenre = reader["Artist_Genre"].ToString();
                     artist.artistBand = reader["Artist_Band"].ToString();
+                    artist.artistPicture = GetPictureArtist(reader["Account_Email"].ToString());
                     listArtist.Add(artist);
                 }
             }
@@ -255,6 +292,43 @@ namespace WiredGroove.Database
             return eventList;
         }
 
+        public string GetPictureArtist(string artistEmail)
+        {
+            string imgString;
+            SqlConnection connection = new SqlConnection(_connectionString);
+            connection.Open();
+
+            try
+            {
+                string query = "select Account_Picture from Account_T where Account_Email = @email";
+
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@email", artistEmail);
+
+                byte[] bytes = (byte[])cmd.ExecuteScalar();
+                imgString = "data:Image/png;base64," + Convert.ToBase64String(bytes);
+
+
+                //while (reader.Read())
+                //{
+                //    PopularArtist artist = new PopularArtist();
+                //    artist.artistName = reader["Artist_Name"].ToString();
+                //    artist.artistInstrument = reader["Artist_Instrument"].ToString();
+                //    artist.artistGenre = reader["Artist_Genre"].ToString();
+                //    artist.artistBand = reader["Artist_Band"].ToString();
+                //    listArtist.Add(artist);
+                //}
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return imgString;
+        }
 
         //Not Used Yet 
         public string GetUserLocation(string email)

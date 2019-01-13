@@ -14,6 +14,7 @@ namespace WiredGroove.Database
         List<PopularArtist> GetPopularArtist();
         bool IsMusician(string email);
         List<Event> GetJobOffers();
+        void InsertPicture(string accountEmail);
         bool InsertArtist(string email, string name, string instrument, string genre, string portfolio, string address, string band, string additionalInfo);
     }
 
