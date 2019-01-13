@@ -79,7 +79,7 @@
                 <div class="col-sm-12">
                     <div class="media">
                         <a class="pull-left" href="#">
-                            <img class="media-object dp img-circle" style="width: 100px; height: 100px;">
+                            <img class="media-object dp img-circle" src="`+ this.artistPicture +`" style="width: 100px; height: 100px;">
                         </a>
                         <div class="media-body">
                             <h4 class="media-heading">` + this.artistName + `<small> ` + this.artistBand + `<small></h4>
