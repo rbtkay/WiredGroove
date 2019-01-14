@@ -459,7 +459,7 @@ namespace WiredGroove.Database
                 {
                     conn.Open();
                     string query = "insert into Event_T (Event_HostEmail, Event_Name, Event_StartDate, Event_EndDate, Event_Location, Event_Capacity, Event_Type, Event_Price, Event_Budget, Event_Genre) " +
-                                   "values (@EMAIL, @NAME, @STARTDATE, @ENDDATE, @LOCATION, @CAPACITY, @TYPE, @BUDGET, @GENRE)";
+                                   "values (@EMAIL, @NAME, @STARTDATE, @ENDDATE, @LOCATION, @CAPACITY, @TYPE, @PRICE, @BUDGET, @GENRE)";
                     SqlCommand cmd = new SqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@EMAIL", email);
                     cmd.Parameters.AddWithValue("@NAME", name);
@@ -468,6 +468,7 @@ namespace WiredGroove.Database
                     cmd.Parameters.AddWithValue("@LOCATION", location);
                     cmd.Parameters.AddWithValue("@CAPACITY", capacity);
                     cmd.Parameters.AddWithValue("@TYPE", type);
+                    cmd.Parameters.AddWithValue("@PRICE", price);
                     cmd.Parameters.AddWithValue("@BUDGET", budget);
                     cmd.Parameters.AddWithValue("@GENRE", genre);
 
@@ -488,7 +489,7 @@ namespace WiredGroove.Database
             return status;
         }
 
-        public List<Connection> GetListConnection()
+        public List<Connection> GetListConnection(string email)
         {
             List<Connection> listConnection = new List<Connection>();
 
@@ -497,16 +498,17 @@ namespace WiredGroove.Database
                 try
                 {
                     conn.Open();
-                    string query = "select Account_T.Account_FullName from Account_T where Account_T.Account_Email = " +
+                    string query = "select Account_T.Account_FullName from Account_T where Account_T.Account_Email in " +
                         "(select distinct Connection_T.Connection_Email from Connection_T where Connection_T.Account_Email = @EMAIL)";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@EMAIL", email);
                     SqlDataReader sdr = cmd.ExecuteReader();
 
                     while (sdr.Read())
                     {
                         Connection connection = new Connection();
-                        connection.destinationName = sdr["Account_T.Account_FullName"].ToString();
+                        connection.destinationName = sdr["Account_FullName"].ToString();
                         listConnection.Add(connection);
                     }
                 }

@@ -12,7 +12,10 @@ namespace WiredGroove
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (string.IsNullOrEmpty(Session["signInEmail"] as string))
+            {
+                Response.Redirect("SignIn.aspx");
+            }
         }
 
         protected void btnCreateEvent_Click(object sender, EventArgs e)

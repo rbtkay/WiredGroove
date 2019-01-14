@@ -11,11 +11,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="txtEmail">Host</label>
-                    <asp:TextBox ID="txtEmail" runat="server" ClientIDMode="Static" CssClass="form-control"></asp:TextBox>
-                </div>
-
-                <div class="form-group">
                     <label for="txtEventName">Event Name</label>
                     <asp:TextBox ID="txtEventName" runat="server" ClientIDMode="Static" CssClass="form-control"></asp:TextBox>
                 </div>

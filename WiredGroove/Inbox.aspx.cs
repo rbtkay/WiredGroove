@@ -14,15 +14,16 @@ namespace WiredGroove
 {
     public partial class Inbox : System.Web.UI.Page
     {
+        string email = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //Request.QueryString["id"] = Session["signInEmail"] as string;
         }
 
         [WebMethod]
         public static List<Connection> GetConnections()
         {
-            List<Connection> connectionList = DataLayerFactory.Instance.GetListConnection();
+            List<Connection> connectionList = DataLayerFactory.Instance.GetListConnection(HttpContext.Current.Session["signInEmail"] as string);
             return connectionList;
         }
     }

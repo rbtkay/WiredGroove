@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
     $.ajax({
         type: "POST",
-        url: "Inbox.aspx/GetListConnection",
+        url: "Inbox.aspx/GetConnections",
         data: '{}',
         contentType: "application/json; charset=utf-8",
         dataType: "json",
