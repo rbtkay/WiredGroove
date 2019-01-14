@@ -16,7 +16,7 @@
                 <div class="row">
                     <div class ="col-sm-12">
                         <div class ="media">
-                            <a class ="pull-left" href="#">
+                            <a class ="pull-left" href="Message.aspx?connectionId=` + this.connectionID + `">
                                 <img class="media-object dp img-circle" style="width: 100px; height: 100px;">
                             </a>
                             <div class="media-body">

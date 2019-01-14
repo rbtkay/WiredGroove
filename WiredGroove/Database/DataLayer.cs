@@ -549,7 +549,7 @@ namespace WiredGroove.Database
                 try
                 {
                     conn.Open();
-                    string query = "select Account_T.Account_FullName from Account_T where Account_T.Account_Email in " +
+                    string query = "select Account_T.Account_Email, Account_T.Account_FullName from Account_T where Account_T.Account_Email in " +
                         "(select distinct Connection_T.Connection_Email from Connection_T where Connection_T.Account_Email = @EMAIL)";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
@@ -559,6 +559,7 @@ namespace WiredGroove.Database
                     while (sdr.Read())
                     {
                         Connection connection = new Connection();
+                        connection.connectionID = GetConnectionID(email, sdr["Account_Email"].ToString());
                         connection.destinationName = sdr["Account_FullName"].ToString();
                         listConnection.Add(connection);
                     }
