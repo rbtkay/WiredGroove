@@ -351,21 +351,22 @@ namespace WiredGroove.Database
             return userLocation;
         }
 
-        public void UploadMedia(string email, string name, string filePath, string fileType)
+        public void UploadMedia(string email, string name, string caption, string filePath, string fileType)
         {
             SqlConnection connection = new SqlConnection(_connectionString);
             connection.Open();
 
             try
             {
-                string query = "insert into Media_T (Account_Email, Media_Name, Media_Path, Media_Type) values (@email, @name, @path, @fileType)";
+                string query = "insert into Media_T (Account_Email, Media_Name, Media_Caption, Media_Path, Media_Type) values (@email, @name, @caption, @path, @fileType)";
 
                 SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@email", email);
                 cmd.Parameters.AddWithValue("@name", name);
+                cmd.Parameters.AddWithValue("@caption", caption);
                 cmd.Parameters.AddWithValue("@path", filePath);
                 cmd.Parameters.AddWithValue("@fileType", fileType);
-                
+
                 cmd.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -389,7 +390,7 @@ namespace WiredGroove.Database
 
             try
             {
-                string query = "select Account_Email, Media_Name, Media_Path, Media_Type from Media_T";
+                string query = "select Account_Email, Media_Name, Media_Caption, Media_LikesCount, Media_Path, Media_Type from Media_T";
 
                 SqlCommand cmd = new SqlCommand(query, connection);
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -398,7 +399,10 @@ namespace WiredGroove.Database
                     Media media = new Media();
                     media.email = reader["Account_Email"].ToString();
                     media.name = reader["Media_Name"].ToString();
+                    media.caption = reader["Media_Caption"].ToString();
                     media.media = reader["Media_Path"].ToString().Substring(1);
+                    if (!String.IsNullOrEmpty(reader["Media_LikesCount"].ToString()))
+                        media.countLikes = Int32.Parse(reader["Media_LikesCount"].ToString());
                     media.type = reader["Media_Type"].ToString();
                     mediaList.Add(media);
                 }
@@ -448,6 +452,54 @@ namespace WiredGroove.Database
                 connection.Close();
             }
             return imgString;
+        }
+
+        public List<PopularArtist> SearchResultArtist(string name, string genre, string location, string instrument)
+        {
+            List<PopularArtist> artistList = new List<PopularArtist>();
+
+            SqlConnection connection = new SqlConnection(_connectionString);
+            connection.Open();
+
+            try
+            {
+                string query = "select * from Artist_T " +
+                    "where Artist_Name = @name OR " +
+                    "Artist_Genre = @genre OR " +
+                    "Artist_address = @location OR " +
+                    "Artist_Instrument = @instrument";
+
+                SqlCommand cmd = new SqlCommand(query, connection);
+
+                cmd.Parameters.AddWithValue("@name", name);
+                cmd.Parameters.AddWithValue("@genre", genre);
+                cmd.Parameters.AddWithValue("@location", location);
+                cmd.Parameters.AddWithValue("@instrument", instrument);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    PopularArtist artist = new PopularArtist();
+
+                    artist.artistName = reader["Artist_Name"].ToString();
+                    artist.artistGenre = reader["Artist_Genre"].ToString();
+                    artist.artistAddress = reader["Artist_Address"].ToString();
+                    artist.artistInstrument = reader["Artist_Instrument"].ToString();
+
+                    artistList.Add(artist);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return artistList;
         }
     }
 }

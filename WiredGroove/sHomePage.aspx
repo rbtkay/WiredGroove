@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/WiredGroove.Master" AutoEventWireup="true" CodeBehind="sHomePage.aspx.cs" Inherits="WiredGroove.sHomePage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script src="Scripts/LoggedInHome.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <form runat="server">
@@ -15,7 +16,7 @@
             </div>
             <div class="col-sm-7" id="newsFeed">
 
-               
+
                 <!-- Modal -->
                 <div class="modal fade" id="myModal" role="dialog">
                     <div class="modal-dialog">
@@ -27,11 +28,35 @@
                                 <h4 class="modal-title">Upload Media</h4>
                             </div>
                             <div class="modal-body">
-                                <asp:FileUpload ID="FileUpload" runat="server" />
-                                <asp:Button ID="btnUpload" runat="server" Text="Upload" OnClick="btnUpload_Click" />
+                                <table>
+                                    <tr>
+                                        <td colspan="2">
+                                            <label>Post Title: </label>
+                                        </td>
+                                        <td colspan="2">
+                                            <asp:TextBox ID="mediaName" runat="server"></asp:TextBox>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td colspan="2">
+                                            <label>Add a Caption: </label>
+                                        </td>
+                                        <td colspan="2">
+                                            <asp:TextBox ID="mediaCaption" runat="server"></asp:TextBox>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4">
+                                            <asp:FileUpload class="form-horizontal" ID="FileUpload" runat="server" />
+                                        </td>
+                                    </tr>
+                                </table>
+                                <asp:Button ID="btnUpload" class="btn btn-primary" Style="background-color: maroon; display:flex; justify-content:center;" runat="server" Text="Upload" OnClick="btnUpload_Click" />
+
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-default"  data-dismiss="modal">Close</button>
                             </div>
                         </div>
 

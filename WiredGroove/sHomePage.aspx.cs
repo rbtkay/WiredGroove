@@ -66,18 +66,18 @@ namespace WiredGroove
             string fileExtension = Path.GetExtension(fileName);
 
             string fileType = string.Empty;
-            if (fileExtension == ".jpg" || fileExtension == "gif" || fileExtension == "bmp" || fileExtension == "png")
+            if (fileExtension == ".jpg" || fileExtension == ".gif" || fileExtension == ".bmp" || fileExtension == ".png")
             {
                 fileType = "Image";
             }
-            else if(fileType == ".mp3" || fileType == ".m4a" || fileType == ".flac" || fileType == ".aac")
+            else /*if(fileType == ".mp3" || fileType == ".m4a" || fileType == ".flac" || fileType == ".aac")*/
             {
                 fileType = "Audio";
             }
-            else
-            {
-                return;
-            }
+            //else
+            //{
+            //    return;
+            //}
 
             int fileSize = postedfile.ContentLength;
 
@@ -89,7 +89,7 @@ namespace WiredGroove
             //BinaryReader binaryReader = new BinaryReader(stream);
             //byte[] bytes = binaryReader.ReadBytes((int)stream.Length);
 
-            DataLayerFactory.Instance.UploadMedia(Session["signInEmail"].ToString(), fileName, filePath, fileType);
+            DataLayerFactory.Instance.UploadMedia(Session["signInEmail"].ToString(), mediaName.Text, mediaCaption.Text, filePath, fileType);
 
             //byte[] buffer;
 

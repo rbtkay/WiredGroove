@@ -16,9 +16,10 @@ namespace WiredGroove.Database
         List<Event> GetJobOffers();
         void InsertPicture(string accountEmail);
         bool InsertArtist(string email, string name, string instrument, string genre, string portfolio, string address, string band, string additionalInfo);
-        void UploadMedia(string email, string name, string filePath, string fileType);
+        void UploadMedia(string email, string name,string caption, string filePath, string fileType);
         List<Media> GetAllMedia();
         string GetPictureMedia(int id);
+        List<PopularArtist> SearchResultArtist(string name, string genre, string location, string instrument);
     }
 
     public class DataLayerFactory
