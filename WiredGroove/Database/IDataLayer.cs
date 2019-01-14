@@ -20,6 +20,9 @@ namespace WiredGroove.Database
         List<Media> GetAllMedia();
         string GetPictureMedia(int id);
         bool CreateEvent(string email, string name, string startDate, string endDate, string location, int capacity, string type, float price, float budget, string genre);
+        List<Connection> GetListConnection();
+        List<Message> GetListMessage(int connectionID);
+        int GetConnectionID(string sender, string destination);
     }
 
     public class DataLayerFactory

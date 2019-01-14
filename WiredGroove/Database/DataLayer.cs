@@ -487,6 +487,121 @@ namespace WiredGroove.Database
             }
             return status;
         }
+
+        public List<Connection> GetListConnection()
+        {
+            List<Connection> listConnection = new List<Connection>();
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string query = "select Account_T.Account_FullName from Account_T where Account_T.Account_Email = " +
+                        "(select distinct Connection_T.Connection_Email from Connection_T where Connection_T.Account_Email = @EMAIL)";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    SqlDataReader sdr = cmd.ExecuteReader();
+
+                    while (sdr.Read())
+                    {
+                        Connection connection = new Connection();
+                        connection.destinationName = sdr["Account_T.Account_FullName"].ToString();
+                        listConnection.Add(connection);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+
+                return listConnection;
+            }
+        }
+
+        public List<Message> GetListMessage(int connectionID)
+        {
+            List<Message> listMessage = new List<Message>();
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string query = "select * from Message_T where Connection_ID = @CONNECTIONID order by Message_Timestamp desc";
+
+
+                    //string query = "select * from Message_T where Message_T.Connection_ID = " + 
+                    //    "(select Connection_T.Connection_ID from Connection_T where Connection_T.Account_Email =  @EMAIL " +
+                    //    ""
+                    //in " +
+                    //           "(select Connection_T.Connection_ID where " +
+                    //           "(Connection_T.Account_Email = @EMAIL and Connection_T.Connection_Email = @DESTINATION) OR " +
+                    //           "(Connection_T.Account_Email = @DESTINATION and Connection_T.Connection_Email = @EMAIL)) " +
+                    //           "order by Message_Timestamp desc";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@CONNECTIONID", connectionID);
+                    SqlDataReader sdr = cmd.ExecuteReader();
+
+                    while (sdr.Read())
+                    {
+                        Message msg = new Message();
+                        msg.messageSender = sdr["Account_Email"].ToString();
+                        msg.messageContent = sdr["Message_Content"].ToString();
+                        msg.messageTimestamp = sdr["Message_Timestamp"].ToString();
+                        listMessage.Add(msg);
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+
+            return listMessage;
+        }
+
+        public int GetConnectionID(string email, string destination)
+        {
+            int id = 0;
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string query = "select Connection_ID from Connection_T where " +
+                                   "(Account_Email = @EMAIL and Connection_Email = @DESTINATION) or " +
+                                   "(Account_Email = @DESTINATION and Connection_Email = @EMAIL);";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@EMAIL", email);
+                    cmd.Parameters.AddWithValue("@DESTINATION", destination);
+                    SqlDataReader sdr = cmd.ExecuteReader();
+                    while (sdr.Read())
+                    {
+                        id = Int32.Parse(sdr["Connection_ID"].ToString());
+                    }
+                }
+                catch(Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            return id;
+        }
     }
 }
 
