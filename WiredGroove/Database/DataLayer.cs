@@ -366,7 +366,7 @@ namespace WiredGroove.Database
                 //cmd.Parameters.AddWithValue("@path", path);
                 cmd.Parameters.AddWithValue("@media", buffer);
 
-                
+
                 cmd.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -448,6 +448,44 @@ namespace WiredGroove.Database
                 connection.Close();
             }
             return imgString;
+        }
+
+        public bool CreateEvent(string email, string name, string startDate, string endDate, string location, int capacity, string type, float price, float budget, string genre)
+        {
+            bool status;
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string query = "insert into Event_T (Event_HostEmail, Event_Name, Event_StartDate, Event_EndDate, Event_Location, Event_Capacity, Event_Type, Event_Price, Event_Budget, Event_Genre) " +
+                                   "values (@EMAIL, @NAME, @STARTDATE, @ENDDATE, @LOCATION, @CAPACITY, @TYPE, @BUDGET, @GENRE)";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@EMAIL", email);
+                    cmd.Parameters.AddWithValue("@NAME", name);
+                    cmd.Parameters.AddWithValue("@STARTDATE", startDate);
+                    cmd.Parameters.AddWithValue("@ENDDATE", endDate);
+                    cmd.Parameters.AddWithValue("@LOCATION", location);
+                    cmd.Parameters.AddWithValue("@CAPACITY", capacity);
+                    cmd.Parameters.AddWithValue("@TYPE", type);
+                    cmd.Parameters.AddWithValue("@BUDGET", budget);
+                    cmd.Parameters.AddWithValue("@GENRE", genre);
+
+                    cmd.ExecuteNonQuery();
+                    status = true;
+                }
+                catch (Exception ex)
+                {
+                    status = false;
+                    throw ex;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+
+            }
+            return status;
         }
     }
 }

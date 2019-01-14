@@ -19,6 +19,7 @@ namespace WiredGroove.Database
         void UploadMedia(string email, string name, byte[] buffer);
         List<Media> GetAllMedia();
         string GetPictureMedia(int id);
+        bool CreateEvent(string email, string name, string startDate, string endDate, string location, int capacity, string type, float price, float budget, string genre);
     }
 
     public class DataLayerFactory
