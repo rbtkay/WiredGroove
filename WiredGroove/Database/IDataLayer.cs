@@ -16,7 +16,7 @@ namespace WiredGroove.Database
         List<Event> GetJobOffers();
         void InsertPicture(string accountEmail);
         bool InsertArtist(string email, string name, string instrument, string genre, string portfolio, string address, string band, string additionalInfo);
-        void UploadMedia(string email, string name, byte[] buffer);
+        void UploadMedia(string email, string name, string filePath, string fileType);
         List<Media> GetAllMedia();
         string GetPictureMedia(int id);
     }

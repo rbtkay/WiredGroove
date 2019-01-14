@@ -57,23 +57,39 @@ namespace WiredGroove
             return newFeed;
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            //DataLayerFactory.Instance.InsertPicture();
-        }
 
         protected void btnUpload_Click(object sender, EventArgs e)
         {
             HttpPostedFile postedfile = FileUpload.PostedFile;
+
             string fileName = Path.GetFileName(postedfile.FileName);
             string fileExtension = Path.GetExtension(fileName);
+
+            string fileType = string.Empty;
+            if (fileExtension == ".jpg" || fileExtension == "gif" || fileExtension == "bmp" || fileExtension == "png")
+            {
+                fileType = "Image";
+            }
+            else if(fileType == ".mp3" || fileType == ".m4a" || fileType == ".flac" || fileType == ".aac")
+            {
+                fileType = "Audio";
+            }
+            else
+            {
+                return;
+            }
+
             int fileSize = postedfile.ContentLength;
 
-            Stream stream = postedfile.InputStream;
-            BinaryReader binaryReader = new BinaryReader(stream);
-            byte[] bytes = binaryReader.ReadBytes((int)stream.Length);
+            postedfile.SaveAs(Server.MapPath("~/Images/") + fileName);
 
-            DataLayerFactory.Instance.UploadMedia(Session["signInEmail"].ToString(), fileName ,bytes);
+            string filePath = "~/Images/" + fileName;
+
+            //Stream stream = postedfile.InputStream;
+            //BinaryReader binaryReader = new BinaryReader(stream);
+            //byte[] bytes = binaryReader.ReadBytes((int)stream.Length);
+
+            DataLayerFactory.Instance.UploadMedia(Session["signInEmail"].ToString(), fileName, filePath, fileType);
 
             //byte[] buffer;
 

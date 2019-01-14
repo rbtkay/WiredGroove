@@ -351,21 +351,20 @@ namespace WiredGroove.Database
             return userLocation;
         }
 
-        public void UploadMedia(string email, string name, byte[] buffer)
+        public void UploadMedia(string email, string name, string filePath, string fileType)
         {
             SqlConnection connection = new SqlConnection(_connectionString);
             connection.Open();
 
             try
             {
-                string query = "insert into Media_T (Account_Email, Media_Name, Media_Image) values (@email, @name, @media)";
+                string query = "insert into Media_T (Account_Email, Media_Name, Media_Path, Media_Type) values (@email, @name, @path, @fileType)";
 
                 SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@email", email);
                 cmd.Parameters.AddWithValue("@name", name);
-                //cmd.Parameters.AddWithValue("@path", path);
-                cmd.Parameters.AddWithValue("@media", buffer);
-
+                cmd.Parameters.AddWithValue("@path", filePath);
+                cmd.Parameters.AddWithValue("@fileType", fileType);
                 
                 cmd.ExecuteNonQuery();
             }
@@ -390,7 +389,7 @@ namespace WiredGroove.Database
 
             try
             {
-                string query = "select Account_Email, Media_ID, Media_Name from Media_T";
+                string query = "select Account_Email, Media_Name, Media_Path, Media_Type from Media_T";
 
                 SqlCommand cmd = new SqlCommand(query, connection);
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -399,7 +398,8 @@ namespace WiredGroove.Database
                     Media media = new Media();
                     media.email = reader["Account_Email"].ToString();
                     media.name = reader["Media_Name"].ToString();
-                    media.media = GetPictureMedia(Int32.Parse(reader["Media_ID"].ToString()));
+                    media.media = reader["Media_Path"].ToString().Substring(1);
+                    media.type = reader["Media_Type"].ToString();
                     mediaList.Add(media);
                 }
             }
@@ -435,7 +435,7 @@ namespace WiredGroove.Database
                 if (cmd.ExecuteScalar() != null)
                 {
                     bytes = (byte[])cmd.ExecuteScalar();
-                    imgString = "data:Image/png;base64," + Convert.ToBase64String(bytes);
+                    imgString = "data:Image/png;base64," + bytes.ToString();
                 }
                 //imgString = "hello";
             }

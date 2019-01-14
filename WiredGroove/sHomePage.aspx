@@ -14,6 +14,8 @@
                 </div>
             </div>
             <div class="col-sm-7" id="newsFeed">
+
+               
                 <!-- Modal -->
                 <div class="modal fade" id="myModal" role="dialog">
                     <div class="modal-dialog">
