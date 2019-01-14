@@ -85,6 +85,15 @@ namespace WiredGroove {
         protected global::System.Web.UI.WebControls.ListBox lbPreferencesID;
         
         /// <summary>
+        /// btnRemove control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRemove;
+        
+        /// <summary>
         /// btnSignUp control.
         /// </summary>
         /// <remarks>
@@ -92,5 +101,14 @@ namespace WiredGroove {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSignUp;
+        
+        /// <summary>
+        /// hiddenPass control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl hiddenPass;
     }
 }
