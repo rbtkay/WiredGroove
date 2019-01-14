@@ -452,7 +452,7 @@ namespace WiredGroove.Database
             }
             return imgString;
         }
-        
+
         public List<PopularArtist> SearchResultArtist(string name, string genre, string location, string instrument)
         {
             List<PopularArtist> artistList = new List<PopularArtist>();
@@ -499,6 +499,7 @@ namespace WiredGroove.Database
             }
 
             return artistList;
+        }
 
         public bool CreateEvent(string email, string name, string startDate, string endDate, string location, int capacity, string type, float price, float budget, string genre)
         {
