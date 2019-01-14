@@ -20,6 +20,10 @@ namespace WiredGroove.Database
         List<Media> GetAllMedia();
         string GetPictureMedia(int id);
         List<PopularArtist> SearchResultArtist(string name, string genre, string location, string instrument);
+        bool CreateEvent(string email, string name, string startDate, string endDate, string location, int capacity, string type, float price, float budget, string genre);
+        List<Connection> GetListConnection(string email);
+        List<Message> GetListMessage(int connectionID);
+        int GetConnectionID(string sender, string destination);
     }
 
     public class DataLayerFactory
@@ -37,7 +41,7 @@ namespace WiredGroove.Database
                     {
                         if (_instance == null)
                         {
-                            string connectionString = "Data Source=LAPTOP-HI71AFPV;Initial Catalog=WiredGrooveDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                            string connectionString = "Data Source=COCOONEDTOWER;Initial Catalog=WiredGrooveDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
                             _instance = new DataLayer(connectionString);
                         }
                     }
