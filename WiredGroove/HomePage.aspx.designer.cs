@@ -22,13 +22,13 @@ namespace WiredGroove {
         protected global::System.Web.UI.WebControls.TextBox txtLocationID;
         
         /// <summary>
-        /// txtCalendarID control.
+        /// txtInstrumentID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCalendarID;
+        protected global::System.Web.UI.WebControls.TextBox txtInstrumentID;
         
         /// <summary>
         /// ddlGenreID control.

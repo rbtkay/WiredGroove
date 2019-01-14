@@ -98,10 +98,12 @@
     <Content Include="Scripts\CreateEvent.js" />
     <Content Include="Scripts\Inbox.js" />
     <Content Include="Scripts\LoggedInHome.js" />
+    <Content Include="Scripts\SearchResult.js" />
     <Content Include="Scripts\Message.js" />
     <Content Include="Scripts\sHomePage.js" />
     <Content Include="Scripts\SignUp.js" />
     <Content Include="Scripts\SignIn.Js" />
+    <Content Include="SearchResult.aspx" />
     <Content Include="sHomePage.aspx" />
     <Content Include="SignIn.aspx" />
     <Content Include="SignUp.aspx" />
@@ -194,6 +196,13 @@
     </Compile>
     <Compile Include="result.aspx.designer.cs">
       <DependentUpon>result.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SearchResult.aspx.cs">
+      <DependentUpon>SearchResult.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SearchResult.aspx.designer.cs">
+      <DependentUpon>SearchResult.aspx</DependentUpon>
     </Compile>
     <Compile Include="sHomePage.aspx.cs">
       <DependentUpon>sHomePage.aspx</DependentUpon>

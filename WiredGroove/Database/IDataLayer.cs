@@ -16,9 +16,10 @@ namespace WiredGroove.Database
         List<Event> GetJobOffers();
         void InsertPicture(string accountEmail);
         bool InsertArtist(string email, string name, string instrument, string genre, string portfolio, string address, string band, string additionalInfo);
-        void UploadMedia(string email, string name, byte[] buffer);
+        void UploadMedia(string email, string name,string caption, string filePath, string fileType);
         List<Media> GetAllMedia();
         string GetPictureMedia(int id);
+        List<PopularArtist> SearchResultArtist(string name, string genre, string location, string instrument);
         bool CreateEvent(string email, string name, string startDate, string endDate, string location, int capacity, string type, float price, float budget, string genre);
         List<Connection> GetListConnection(string email);
         List<Message> GetListMessage(int connectionID);

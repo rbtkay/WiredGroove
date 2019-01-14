@@ -10,5 +10,8 @@ namespace WiredGroove.Classes
         public string email { get; set; }
         public string name { get; set; }
         public string media { get; set; }
+        public string type { get; set; }
+        public string caption { get; set; }
+        public int countLikes { get; set; }
     }
 }

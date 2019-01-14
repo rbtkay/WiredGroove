@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="~/Bootstrap/css/bootstrap.css" />
     <link rel="stylesheet" href="~/Styles/custom.css" />
     <link rel="stylesheet" href="~/Styles/jquery-ui.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <script type="text/javascript" src="./Scripts/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="./Scripts/jquery-ui.min.js"></script>
     <script type="text/javascript" src="./Bootstrap/js/bootstrap.js"></script>
@@ -78,10 +79,10 @@
                             { %>
                     <li><a href="BecomeArtist.aspx" id="aBecome">Become an Artist</a></li>
                     <%      }
-                            else
-                            { %>
+                        else
+                        { %>
                     <li><a href="EnrolledJobs.aspx" id="enrolledJobs">Enrolled Jobs</a></li>
-                          <%} %>
+                    <%} %>
                     <li><a href="Inbox.aspx">Inbox</a></li>
 
                     <li class="dropdown">
@@ -121,7 +122,6 @@
     <script type="text/javascript" src="./Scripts/LoggedInHome.js"></script>
     <script type="text/javascript" src="./Scripts/Message.js"></script>
     <script type="text/javascript" src="Scripts/CreateEvent.js"></script>
-
     <%--</form>--%>
 </body>
 </html>

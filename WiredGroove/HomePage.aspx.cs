@@ -16,5 +16,18 @@ namespace WiredGroove
                 Response.Redirect("sHomePage.aspx");
             }
         }
+
+        protected void btnLookupID_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtArtistNameID.Text) || !String.IsNullOrEmpty(txtLocationID.Text) ||
+                !String.IsNullOrEmpty(txtInstrumentID.Text) || !String.IsNullOrEmpty(ddlGenreID.Text))
+            {
+                Session["searchName"] = txtArtistNameID.Text;
+                Session["searchGenre"] = ddlGenreID.Text;
+                Session["searchLocation"] = txtLocationID.Text;
+                Session["searchInstrument"] = txtInstrumentID.Text;
+                Response.Redirect("SearchResult.aspx");
+            }
+        }
     }
 }
