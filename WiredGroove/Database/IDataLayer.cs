@@ -16,6 +16,9 @@ namespace WiredGroove.Database
         List<Event> GetJobOffers();
         void InsertPicture(string accountEmail);
         bool InsertArtist(string email, string name, string instrument, string genre, string portfolio, string address, string band, string additionalInfo);
+        void UploadMedia(string email, string name, byte[] buffer);
+        List<Media> GetAllMedia();
+        string GetPictureMedia(int id);
     }
 
     public class DataLayerFactory
@@ -33,7 +36,7 @@ namespace WiredGroove.Database
                     {
                         if (_instance == null)
                         {
-                            string connectionString = "Data Source=COCOONEDTOWER;Initial Catalog=WiredGrooveDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                            string connectionString = "Data Source=LAPTOP-HI71AFPV;Initial Catalog=WiredGrooveDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
                             _instance = new DataLayer(connectionString);
                         }
                     }

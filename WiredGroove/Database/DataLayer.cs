@@ -62,7 +62,7 @@ namespace WiredGroove.Database
                 string query1 = "update Account_T " +
                                         "set Account_Picture = " +
                                         "(SELECT BulkColumn " +
-                                        "FROM Openrowset(Bulk 'D:/Dev/WiredGroove/WiredGroove/Images/BasicAccount.png', Single_Blob) as img)" +
+                                        "FROM Openrowset(Bulk 'D:/AUST/Web Prog/WiredGroove/WiredGroove/Images/BasicAccount.png', Single_Blob) as img)" +
                                         "where Account_Email = @email";
 
                 SqlCommand cmd = new SqlCommand(query1, connection);
@@ -312,17 +312,6 @@ namespace WiredGroove.Database
                     bytes = (byte[])cmd.ExecuteScalar();
                     imgString = "data:Image/png;base64," + Convert.ToBase64String(bytes);
                 }
-
-
-                //while (reader.Read())
-                //{
-                //    PopularArtist artist = new PopularArtist();
-                //    artist.artistName = reader["Artist_Name"].ToString();
-                //    artist.artistInstrument = reader["Artist_Instrument"].ToString();
-                //    artist.artistGenre = reader["Artist_Genre"].ToString();
-                //    artist.artistBand = reader["Artist_Band"].ToString();
-                //    listArtist.Add(artist);
-                //}
             }
             catch (Exception e)
             {
@@ -362,6 +351,104 @@ namespace WiredGroove.Database
             return userLocation;
         }
 
+        public void UploadMedia(string email, string name, byte[] buffer)
+        {
+            SqlConnection connection = new SqlConnection(_connectionString);
+            connection.Open();
+
+            try
+            {
+                string query = "insert into Media_T (Account_Email, Media_Name, Media_Image) values (@email, @name, @media)";
+
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@email", email);
+                cmd.Parameters.AddWithValue("@name", name);
+                //cmd.Parameters.AddWithValue("@path", path);
+                cmd.Parameters.AddWithValue("@media", buffer);
+
+                
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+
+        }
+
+        public List<Media> GetAllMedia()
+        {
+            List<Media> mediaList = new List<Media>();
+
+            SqlConnection connection = new SqlConnection(_connectionString);
+            connection.Open();
+
+            try
+            {
+                string query = "select Account_Email, Media_ID, Media_Name from Media_T";
+
+                SqlCommand cmd = new SqlCommand(query, connection);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Media media = new Media();
+                    media.email = reader["Account_Email"].ToString();
+                    media.name = reader["Media_Name"].ToString();
+                    media.media = GetPictureMedia(Int32.Parse(reader["Media_ID"].ToString()));
+                    mediaList.Add(media);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return mediaList;
+        }
+
+        public string GetPictureMedia(int id)
+        {
+            string imgString = string.Empty;
+            SqlConnection connection = new SqlConnection(_connectionString);
+            connection.Open();
+
+            try
+            {
+                //string haha = "caroline@gmail.com";
+                string query = "select Media_Image from Media_T where Media_ID = @id";
+
+                SqlCommand cmd = new SqlCommand(query, connection);
+                //cmd.Parameters.AddWithValue("@email", haha);
+                cmd.Parameters.AddWithValue("@id", id);
+
+                byte[] bytes;
+
+                if (cmd.ExecuteScalar() != null)
+                {
+                    bytes = (byte[])cmd.ExecuteScalar();
+                    imgString = "data:Image/png;base64," + Convert.ToBase64String(bytes);
+                }
+                //imgString = "hello";
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return imgString;
+        }
     }
 }
 

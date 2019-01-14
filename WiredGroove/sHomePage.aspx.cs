@@ -8,6 +8,7 @@ using System.Web.Script.Serialization;
 using WiredGroove.Database;
 using WiredGroove.Classes;
 using System.Web.Services;
+using System.IO;
 
 namespace WiredGroove
 {
@@ -49,9 +50,48 @@ namespace WiredGroove
             return artistList;
         }
 
+        [WebMethod]
+        public static List<Media> GetNewsFeed()
+        {
+            List<Media> newFeed = DataLayerFactory.Instance.GetAllMedia();
+            return newFeed;
+        }
+
         protected void Button1_Click(object sender, EventArgs e)
         {
             //DataLayerFactory.Instance.InsertPicture();
+        }
+
+        protected void btnUpload_Click(object sender, EventArgs e)
+        {
+            HttpPostedFile postedfile = FileUpload.PostedFile;
+            string fileName = Path.GetFileName(postedfile.FileName);
+            string fileExtension = Path.GetExtension(fileName);
+            int fileSize = postedfile.ContentLength;
+
+            Stream stream = postedfile.InputStream;
+            BinaryReader binaryReader = new BinaryReader(stream);
+            byte[] bytes = binaryReader.ReadBytes((int)stream.Length);
+
+            DataLayerFactory.Instance.UploadMedia(Session["signInEmail"].ToString(), fileName ,bytes);
+
+            //byte[] buffer;
+
+            //if (FileUpload.HasFile && FileUpload.PostedFile != null && FileUpload.PostedFile.FileName != "")
+            //{
+
+            //    HttpPostedFile file = FileUpload.PostedFile;
+
+            //    buffer = new byte[file.ContentLength];
+            //    int bytesReaded = file.InputStream.Read(buffer, 0, FileUpload.PostedFile.ContentLength);
+
+            //    if (bytesReaded > 0)
+            //    {
+            //        string path = "~/Images/" + FileUpload.FileName;
+            //        FileUpload.SaveAs(Server.MapPath(path));
+            //        DataLayerFactory.Instance.UploadMedia(Session["signInEmail"].ToString(), FileUpload.FileName, path, buffer);
+            //    }
+            //}
         }
     }
 }
