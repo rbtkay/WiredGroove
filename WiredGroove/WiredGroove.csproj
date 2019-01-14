@@ -110,6 +110,7 @@
     <Content Include="Scripts\HomePage.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-ui.min.js" />
+    <Content Include="UploadMedia.aspx" />
     <Content Include="WebForm1.aspx" />
     <Content Include="WiredGroove.Master" />
   </ItemGroup>
@@ -135,6 +136,7 @@
       <DependentUpon>BecomeArtist.aspx</DependentUpon>
     </Compile>
     <Compile Include="Classes\Event.cs" />
+    <Compile Include="Classes\Media.cs" />
     <Compile Include="Classes\PopularArtist.cs" />
     <Compile Include="Classes\Test.cs" />
     <Compile Include="Database\DataLayer.cs" />
@@ -191,6 +193,13 @@
     </Compile>
     <Compile Include="test1.aspx.designer.cs">
       <DependentUpon>test1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UploadMedia.aspx.cs">
+      <DependentUpon>UploadMedia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UploadMedia.aspx.designer.cs">
+      <DependentUpon>UploadMedia.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
