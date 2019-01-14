@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="~/Bootstrap/css/bootstrap.css" />
     <link rel="stylesheet" href="~/Styles/custom.css" />
     <link rel="stylesheet" href="~/Styles/jquery-ui.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script type="text/javascript" src="./Scripts/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="./Scripts/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="./Bootstrap/js/bootstrap.js"></script>
     <%--<link rel="stylesheet" href="~/Bootstrap/css/font-awesome.min.css"  /> Unable to load for some reason--%>
 
 
@@ -112,13 +114,13 @@
 
     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
     </asp:ContentPlaceHolder>
-    <script type="text/javascript" src="./Scripts/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="./Scripts/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="./Bootstrap/js/bootstrap.js"></script>
+    
     <script type="text/javascript" src="./Scripts/HomePage.js"></script>
     <script type="text/javascript" src="./Scripts/SignUp.js"></script>
     <script type="text/javascript" src="./Scripts/SignIn.Js"></script>
     <script type="text/javascript" src="./Scripts/LoggedInHome.js"></script>
+    <script type="text/javascript" src="./Scripts/Message.js"></script>
+    <script type="text/javascript" src="Scripts/CreateEvent.js"></script>
 
     <%--</form>--%>
 </body>
