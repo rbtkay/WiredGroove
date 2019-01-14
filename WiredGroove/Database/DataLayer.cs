@@ -655,6 +655,54 @@ namespace WiredGroove.Database
             }
             return id;
         }
+
+        public List<PopularArtist> GeneralSearch(string generalSearch)
+        {
+            List<PopularArtist> generalList = new List<PopularArtist>();
+
+            SqlConnection connection = new SqlConnection(_connectionString);
+            connection.Open();
+
+            try
+            {
+                string query = "select * from Artist_T " +
+                    "where Artist_Name = @generalSearch OR " +
+                    "Artist_Genre = @generalSearch OR " +
+                    "Artist_address = @generalSearch OR " +
+                    "Artist_Instrument = @generalSearch";
+
+                SqlCommand cmd = new SqlCommand(query, connection);
+
+                cmd.Parameters.AddWithValue("@name", generalSearch);
+                cmd.Parameters.AddWithValue("@genre", generalSearch);
+                cmd.Parameters.AddWithValue("@location", generalSearch);
+                cmd.Parameters.AddWithValue("@instrument", generalSearch);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    PopularArtist artist = new PopularArtist();
+
+                    artist.artistName = reader["Artist_Name"].ToString();
+                    artist.artistGenre = reader["Artist_Genre"].ToString();
+                    artist.artistAddress = reader["Artist_Address"].ToString();
+                    artist.artistInstrument = reader["Artist_Instrument"].ToString();
+
+                    generalList.Add(artist);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return generalList;
+        }
     }
 }
 

@@ -14,32 +14,55 @@ namespace WiredGroove
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (hiddenField.Value != null)
+            {
+                Session["generalSearch"] = Request.Form.Get("generalSearch");
+            }
         }
 
         [WebMethod]
         public static List<PopularArtist> SearchResultArtist()
         {
+            string name = string.Empty;
+            string genre = string.Empty;
+            string location = string.Empty;
+            string instrument = string.Empty;
+
             //if (!String.IsNullOrEmpty(HttpContext.Current.Session["searchName"] as String))
             //{
-            string name = HttpContext.Current.Session["searchName"].ToString();
+                name = HttpContext.Current.Session["searchName"].ToString();
             //}
             //if (!String.IsNullOrEmpty(HttpContext.Current.Session["searchName"] as String))
             //{
-            string genre = HttpContext.Current.Session["searchGenre"].ToString();
+                genre = HttpContext.Current.Session["searchGenre"].ToString();
             //}
             //if (!String.IsNullOrEmpty(HttpContext.Current.Session["searchName"] as String))
             //{
-            string location = HttpContext.Current.Session["searchLocation"].ToString();
+                location = HttpContext.Current.Session["searchLocation"].ToString();
             //}
             //if (!String.IsNullOrEmpty(HttpContext.Current.Session["searchName"] as String))
             //{
-            string instrument = HttpContext.Current.Session["searchInstrument"].ToString();
+                instrument = HttpContext.Current.Session["searchInstrument"].ToString();
+            //}
+
+            //if(String.IsNullOrEmpty(name) && String.IsNullOrEmpty(genre) && String.IsNullOrEmpty(location) && String.IsNullOrEmpty(instrument))
+            //{
+                
             //}
 
             List<PopularArtist> artistList = DataLayerFactory.Instance.SearchResultArtist(name, genre, location, instrument);
 
             return artistList;
+        }
+
+        [WebMethod]
+        public static List<PopularArtist> GeneralSearch()
+        {
+            string generalResult = HttpContext.Current.Session["generalResult"].ToString();
+
+            List<PopularArtist> generalList = DataLayerFactory.Instance.GeneralSearch(generalResult);
+
+            return generalList;
         }
     }
 }
