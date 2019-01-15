@@ -157,7 +157,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="media">
-                        <a class="pull-left" href="#">
+                        <a class="pull-left" href="ViewProfile.aspx?accountEmail=` + this.artistEmail + `">
                             <img class="media-object dp img-circle" src="`+ this.artistPicture + `" style="width: 100px; height: 100px;">
                         </a>
                         <div class="media-body">

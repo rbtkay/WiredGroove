@@ -36,8 +36,6 @@ namespace WiredGroove.Database
                     cmd.Parameters.AddWithValue("@DOB", dob);
                     cmd.Parameters.AddWithValue("@PREFERENCES", preferences);
                     cmd.ExecuteNonQuery();
-
-
                 }
                 catch (Exception e)
                 {
@@ -62,7 +60,7 @@ namespace WiredGroove.Database
                 string query1 = "update Account_T " +
                                         "set Account_Picture = " +
                                         "(SELECT BulkColumn " +
-                                        "FROM Openrowset(Bulk 'D:/AUST/Web Prog/WiredGroove/WiredGroove/Images/BasicAccount.png', Single_Blob) as img)" +
+                                        "FROM Openrowset(Bulk 'D:/Dev/WiredGroove/WiredGroove/Images/BasicAccount.png', Single_Blob) as img)" +
                                         "where Account_Email = @email";
 
                 SqlCommand cmd = new SqlCommand(query1, connection);
@@ -237,6 +235,7 @@ namespace WiredGroove.Database
                 while (reader.Read())
                 {
                     PopularArtist artist = new PopularArtist();
+                    artist.artistEmail = reader["Account_Email"].ToString();
                     artist.artistName = reader["Artist_Name"].ToString();
                     artist.artistInstrument = reader["Artist_Instrument"].ToString();
                     artist.artistGenre = reader["Artist_Genre"].ToString();
@@ -418,6 +417,48 @@ namespace WiredGroove.Database
             return mediaList;
         }
 
+        public List<Media> GetAccountMedia(string email)
+        {
+            List<Media> mediaList = new List<Media>();
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                try
+                {
+                    string query = "select Account_Email, Media_Name, Media_Path, Media_Type, Media_LikesCount, Media_Caption from Media_T where Account_Email = @EMAIL";
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@EMAIL", email);
+                    SqlDataReader sdr = cmd.ExecuteReader();
+
+                    while (sdr.Read())
+                    {
+                        Media media = new Media();
+                        media.email = sdr["Account_Email"].ToString();
+                        media.name = sdr["Media_Name"].ToString();
+                        media.caption = sdr["Media_Caption"].ToString();
+                        media.media = sdr["Media_Path"].ToString().Substring(1);
+                        if (!string.IsNullOrEmpty(sdr["Media_LikesCount"].ToString()))
+                        {
+                            media.countLikes = Int32.Parse(sdr["Media_LikesCount"].ToString());
+                        }
+                        media.type = sdr["Media_Type"].ToString();
+                        mediaList.Add(media);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+
+            return mediaList;
+        }
+
         public string GetPictureMedia(int id)
         {
             string imgString = string.Empty;
@@ -481,6 +522,7 @@ namespace WiredGroove.Database
                 {
                     PopularArtist artist = new PopularArtist();
 
+                    artist.artistEmail = reader["Account_Email"].ToString();
                     artist.artistName = reader["Artist_Name"].ToString();
                     artist.artistGenre = reader["Artist_Genre"].ToString();
                     artist.artistAddress = reader["Artist_Address"].ToString();
@@ -681,7 +723,7 @@ namespace WiredGroove.Database
                 while (reader.Read())
                 {
                     PopularArtist artist = new PopularArtist();
-
+                    artist.artistEmail = reader["Account_Email"].ToString();
                     artist.artistName = reader["Artist_Name"].ToString();
                     artist.artistGenre = reader["Artist_Genre"].ToString();
                     artist.artistAddress = reader["Artist_Address"].ToString();
@@ -747,7 +789,7 @@ namespace WiredGroove.Database
             }
             return eventList;
         }
-        
+
         public void InsertMessage(int connectionID, string messageContent, string messageSender)
         {
             using (SqlConnection conn = new SqlConnection(_connectionString))
@@ -773,6 +815,66 @@ namespace WiredGroove.Database
                     conn.Close();
                 }
             }
+        }
+
+        public void InsertConnection(string email, string connection)
+        {
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                try
+                {
+                    string query = "insert into Connection_T (Account_Email, Connection_Email) values (@EMAIL, @CONNECTION)";
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@EMAIL", email);
+                    cmd.Parameters.AddWithValue("@CONNECTION", connection);
+
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+        }
+
+        public bool CheckConnection(string email, string connection)
+        {
+            bool status = false;
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                try
+                {
+                    string query = "select distinct Connection_ID from Connection_T where (Account_Email = @EMAIL and Connection_Email = @CONNECTION) or(Account_Email = @CONNECTION and Connection_Email = @EMAIL)";
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@EMAIL", email);
+                    cmd.Parameters.AddWithValue("@CONNECTION", connection);
+
+                    SqlDataReader sdr = cmd.ExecuteReader();
+
+                    while (sdr.Read())
+                    {
+                        status = true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    status = false;
+                    throw ex;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            return status;
         }
     }
 }

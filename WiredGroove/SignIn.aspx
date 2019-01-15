@@ -11,7 +11,7 @@
 
             <form runat="server" class="form, container" style="width: 80%; height: 80%; margin: 40px;">
                 <div class="form-group">
-                    <h1>Sign In</h1>
+                    <h1 style="color: maroon;">Sign In</h1>
                 </div>
 
                 <div class="form-group col-sm-12">

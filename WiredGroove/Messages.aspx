@@ -3,9 +3,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <script type="text/javascript" src="./Scripts/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="./Scripts/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="./Bootstrap/js/bootstrap.js"></script>
     <script type="text/javascript" src="./Scripts/Message.js"></script>
     <form runat="server">
         <div style="margin-top: 5%">
