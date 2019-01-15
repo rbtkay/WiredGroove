@@ -27,6 +27,9 @@ namespace WiredGroove.Database
         List<PopularArtist> GeneralSearch(string generalSearch);
         List<Event> GetMyEvents(string email);
         void InsertMessage(int connectionID, string messageContent, string messageSender);
+        List<Media> GetAccountMedia(string email);
+        void InsertConnection(string email, string connection);
+        bool CheckConnection(string email, string connection);
     }
 
     public class DataLayerFactory
@@ -44,7 +47,7 @@ namespace WiredGroove.Database
                     {
                         if (_instance == null)
                         {
-                            string connectionString = "Data Source=LAPTOP-HI71AFPV;Initial Catalog=WiredGrooveDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                            string connectionString = "Data Source=COCOONEDTOWER;Initial Catalog=WiredGrooveDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
                             _instance = new DataLayer(connectionString);
                         }
                     }

@@ -7,6 +7,7 @@ namespace WiredGroove.Classes
 {
     public class PopularArtist
     {
+        public string artistEmail { get; set; }
         public string artistName { get; set; }
         public string artistInstrument { get; set; }
         public string artistGenre { get; set; }
