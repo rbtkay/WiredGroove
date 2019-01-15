@@ -15,8 +15,6 @@
             </div>
             <div class="col-sm-7" id="list-connection">
             </div>
-            <div class="col-sm-3" id="list-popular-artist">
-            </div>
         </div>
 
     </form>

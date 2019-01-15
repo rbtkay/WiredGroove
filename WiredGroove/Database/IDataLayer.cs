@@ -24,6 +24,7 @@ namespace WiredGroove.Database
         List<Connection> GetListConnection(string email);
         List<Message> GetListMessage(int connectionID);
         int GetConnectionID(string sender, string destination);
+        void InsertMessage(int connectionID, string messageContent, string messageSender);
     }
 
     public class DataLayerFactory
