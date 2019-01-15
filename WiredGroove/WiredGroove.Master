@@ -119,8 +119,6 @@
     <script type="text/javascript" src="./Scripts/HomePage.js"></script>
     <script type="text/javascript" src="./Scripts/SignUp.js"></script>
     <script type="text/javascript" src="./Scripts/SignIn.Js"></script>
-    <script type="text/javascript" src="./Scripts/LoggedInHome.js"></script>
-    <script type="text/javascript" src="./Scripts/Message.js"></script>
     <script type="text/javascript" src="Scripts/CreateEvent.js"></script>
     <%--</form>--%>
 </body>
