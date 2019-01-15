@@ -17,6 +17,7 @@ namespace WiredGroove
         public static string emailLogIn;
         protected void Page_Load(object sender, EventArgs e)
         {
+            HiddenFieldLikes.Value = Request.Form.Get("name");
             if (String.IsNullOrEmpty(Session["signInEmail"] as string))
             {
                 Response.Redirect("SignIn.aspx");
@@ -27,6 +28,7 @@ namespace WiredGroove
                     hiddenField.Value = Session["musician"].ToString();
             }
 
+            //if(HiddenFieldLikes)
 
         }
 

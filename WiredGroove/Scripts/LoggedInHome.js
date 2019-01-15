@@ -84,18 +84,20 @@
                 let div = $(`
             <div class="row">
             <div class="col-sm-12">
-                <div class="card">
-                    <a class="card-img-top" href="#">
-                        <img class="media-object dp " src="`+ this.media + `" style="width: 100%; height: 300px;">
-                    </a>
-                    <div class="card-body">
-                        <h4 class="media-heading">` + this.name + `<small> ` + this.email + `<small></h4>
-                        <p>`+ this.caption + `</p>
-                        <div>#Likes<p>`+ this.countLikes + `</p>
-                        </h5>
-                        <hr style="margin: 8px auto">
-                    </div>
-                </div>
+                    <label class="hidden" value="`+ this.id + `"></label>
+                        <div class="card">
+                            <a class="card-img-top" href="#">
+                                <img class="media-object dp " src="`+ this.media + `" style="width: 100%; height: 300px;">
+                            </a>
+                            <div class="card-body">
+                                <h4 class="media-heading">` + this.name + `<small> ` + this.email + `<small></h4>
+                                <p>`+ this.caption + `</p>
+                                <h5>#Likes<small> `+ this.countLikes + `</small>
+                                </h5>
+                                <button id="`+ this.id + `">Like</button>
+                                <hr style="margin: 8px auto">
+                            </div>
+                        </div>
             </div>
         </div>
             `);
@@ -105,19 +107,21 @@
             <div class="row">
             <div class="col-sm-12">
                 <div class="media">
-                    <a class=pull-left href="#">
-                    <audio controls>
-                        <source src="`+ this.media + `" type="audio/ogg">
-                        <source src="`+ this.media + `" type="audio/mpeg">
-                        Your browser does not support the audio element.
-                    </audio>
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">` + this.name + `<small> ` + this.email + `<small></h4>
-                        <h5>#Likes<h6>`+ this.countLikes + `</h6>
-                        </h5>
-                        <hr style="margin: 8px auto">
-                    </div>
+                        <label class="hidden" value="`+ this.id + `"></label>
+                        <a class=pull-left href="#">
+                        <audio controls>
+                            <source src="`+ this.media + `" type="audio/ogg">
+                            <source src="`+ this.media + `" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">` + this.name + `<small> ` + this.email + `<small></h4>
+                            <h5>#Likes<small> `+ this.countLikes + `</small>
+                            </h5>
+                            <button>Like</button>
+                            <hr style="margin: 8px auto">
+                        </div>
                 </div>
             </div>
         </div>
@@ -127,6 +131,23 @@
 
         });
     }
+
+    // $(".newFeedContainer").on("click", "#newFeed button", function () {
+    //     alert($(this).text());
+    // });
+
+    // $('form').submit(function (ev) {
+    //     ev.preventDefault();
+    //     // ajax stuff...
+
+    // });
+
+
+
+    function reply_click(clicked_id) {
+        alert(this.id);
+    }
+
 
     function PopulateJobList(parent, popularArtists) {
         $.each(popularArtists.d, function () {

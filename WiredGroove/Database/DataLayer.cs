@@ -389,7 +389,7 @@ namespace WiredGroove.Database
 
             try
             {
-                string query = "select Account_Email, Media_Name, Media_Caption, Media_LikesCount, Media_Path, Media_Type from Media_T";
+                string query = "select Account_Email, Media_ID, Media_Name, Media_Caption, Media_LikesCount, Media_Path, Media_Type from Media_T";
 
                 SqlCommand cmd = new SqlCommand(query, connection);
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -397,6 +397,7 @@ namespace WiredGroove.Database
                 {
                     Media media = new Media();
                     media.email = reader["Account_Email"].ToString();
+                    media.id = Int32.Parse(reader["Media_ID"].ToString());
                     media.name = reader["Media_Name"].ToString();
                     media.caption = reader["Media_Caption"].ToString();
                     media.media = reader["Media_Path"].ToString().Substring(1);

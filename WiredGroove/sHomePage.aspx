@@ -1,11 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/WiredGroove.Master" AutoEventWireup="true" CodeBehind="sHomePage.aspx.cs" Inherits="WiredGroove.sHomePage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script src="Scripts/LoggedInHome.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <form runat="server">
-        <div style="margin-top: 5%">
+        <div style="margin-top: 5%" class="newFeedContainer">
             <div class="col-sm-2">
                 <div class="list-group" id="list-tab" role="tablist">
                     <a class="list-group-item list-group-item-action" id="list-home-list" href="#list-home" role="tab" aria-controls="home">Profile</a>
@@ -68,5 +67,9 @@
         </div>
 
         <asp:HiddenField ID="hiddenField" ClientIDMode="static" runat="server" />
+        <asp:HiddenField ID="HiddenFieldLikes" runat="server" />
+
+        <script src="Scripts/LoggedInHome.js"></script>
+
     </form>
 </asp:Content>
