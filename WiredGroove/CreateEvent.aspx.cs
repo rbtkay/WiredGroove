@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using WiredGroove.Database;
+using WiredGroove.Classes;
 
 namespace WiredGroove
 {
@@ -16,6 +17,11 @@ namespace WiredGroove
             {
                 Response.Redirect("SignIn.aspx");
             }
+            foreach(Connection connection in DataLayerFactory.Instance.GetListConnection(Session["signInEmail"] as string))
+            {
+                ddlArtist.Items.Add(connection.destinationName);
+            }
+            
         }
 
         protected void btnCreateEvent_Click(object sender, EventArgs e)
@@ -30,13 +36,14 @@ namespace WiredGroove
             float price = float.Parse(txtPrice.Text);
             float budget = float.Parse(txtBudget.Text);
             string genre = ddlGenre.SelectedValue;
+            string musician = ddlArtist.SelectedValue;
 
             if (!string.IsNullOrEmpty(name) && 
                 !string.IsNullOrEmpty(startDate) && 
                 !string.IsNullOrEmpty(endDate) && 
                 !string.IsNullOrEmpty(location))
             {
-                if (DataLayerFactory.Instance.CreateEvent(email, name, startDate, endDate, location, capacity, type, price, budget, genre))
+                if (DataLayerFactory.Instance.CreateEvent(email, name, startDate, endDate, location, capacity, type, price, budget, genre, musician))
                 {
                     Response.Redirect("sHomePage.aspx");
                 }

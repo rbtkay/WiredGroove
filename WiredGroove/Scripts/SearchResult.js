@@ -1,16 +1,30 @@
 ﻿$(document).ready(function () {
-    
-    $.ajax({
-        type: "POST",
-        url: "SearchResult.aspx/SearchResultArtist",
-        data: '{}',
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function (data) {
-            console.log(data);
-            PopulateSearchResult($("#search-result"), data)
-        },
-    });
+
+    if ($("#hiddenField").val() != "") {
+        $.ajax({
+            type: "POST",
+            url: "SearchResult.aspx/GeneralSearch",
+            data: '{}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                console.log(data);
+                PopulateSearchResult($("#search-result"), data)
+            },
+        });
+    } else {
+        $.ajax({
+            type: "POST",
+            url: "SearchResult.aspx/SearchResultArtist",
+            data: '{}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                console.log(data);
+                PopulateSearchResult($("#search-result"), data)
+            },
+        });
+    }
 
 
     function PopulateSearchResult(parent, resultList) {

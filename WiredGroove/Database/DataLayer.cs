@@ -275,8 +275,8 @@ namespace WiredGroove.Database
                     Event job = new Event();
                     job.eventName = reader["Event_Name"].ToString();
                     job.eventType = reader["Event_Type"].ToString();
-                    job.eventDateStart = (DateTime)reader["Event_StartDate"];
-                    job.eventDateEnd = (DateTime)reader["Event_EndDate"];
+                    job.eventDateStart = reader["Event_StartDate"].ToString();
+                    job.eventDateEnd = reader["Event_EndDate"].ToString();
                     eventList.Add(job);
                 }
             }
@@ -501,7 +501,7 @@ namespace WiredGroove.Database
             return artistList;
         }
 
-        public bool CreateEvent(string email, string name, string startDate, string endDate, string location, int capacity, string type, float price, float budget, string genre)
+        public bool CreateEvent(string email, string name, string startDate, string endDate, string location, int capacity, string type, float price, float budget, string genre, string musician)
         {
             bool status;
             using (SqlConnection conn = new SqlConnection(_connectionString))
@@ -509,8 +509,8 @@ namespace WiredGroove.Database
                 try
                 {
                     conn.Open();
-                    string query = "insert into Event_T (Event_HostEmail, Event_Name, Event_StartDate, Event_EndDate, Event_Location, Event_Capacity, Event_Type, Event_Price, Event_Budget, Event_Genre) " +
-                                   "values (@EMAIL, @NAME, @STARTDATE, @ENDDATE, @LOCATION, @CAPACITY, @TYPE, @PRICE, @BUDGET, @GENRE)";
+                    string query = "insert into Event_T (Event_HostEmail, Event_Name, Event_StartDate, Event_EndDate, Event_Location, Event_Capacity, Event_Type, Event_Price, Event_Budget, Event_Genre, Event_Musician) " +
+                                   "values (@EMAIL, @NAME, @STARTDATE, @ENDDATE, @LOCATION, @CAPACITY, @TYPE, @PRICE, @BUDGET, @GENRE, @MUSICIAN)";
                     SqlCommand cmd = new SqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@EMAIL", email);
                     cmd.Parameters.AddWithValue("@NAME", name);
@@ -522,6 +522,8 @@ namespace WiredGroove.Database
                     cmd.Parameters.AddWithValue("@PRICE", price);
                     cmd.Parameters.AddWithValue("@BUDGET", budget);
                     cmd.Parameters.AddWithValue("@GENRE", genre);
+                    cmd.Parameters.AddWithValue("@MUSICIAN", musician);
+
 
                     cmd.ExecuteNonQuery();
                     status = true;
@@ -654,6 +656,98 @@ namespace WiredGroove.Database
             return id;
         }
 
+        public List<PopularArtist> GeneralSearch(string generalSearch)
+        {
+            List<PopularArtist> generalList = new List<PopularArtist>();
+
+            SqlConnection connection = new SqlConnection(_connectionString);
+            connection.Open();
+
+            try
+            {
+                string query = "select * from Artist_T " +
+                    "where Artist_Name = @generalSearch OR " +
+                    "Artist_Genre = @generalSearch OR " +
+                    "Artist_address = @generalSearch OR " +
+                    "Artist_Instrument = @generalSearch";
+
+                SqlCommand cmd = new SqlCommand(query, connection);
+
+                cmd.Parameters.AddWithValue("@generalSearch", generalSearch);
+
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    PopularArtist artist = new PopularArtist();
+
+                    artist.artistName = reader["Artist_Name"].ToString();
+                    artist.artistGenre = reader["Artist_Genre"].ToString();
+                    artist.artistAddress = reader["Artist_Address"].ToString();
+                    artist.artistInstrument = reader["Artist_Instrument"].ToString();
+
+                    generalList.Add(artist);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return generalList;
+        }
+
+
+        public List<Event> GetMyEvents(string email)
+        {
+            List<Event> eventList = new List<Event>();
+
+            SqlConnection connection = new SqlConnection(_connectionString);
+            connection.Open();
+
+            try
+            {
+                string query = "select Event_Name, Event_StartDate, Event_EndDate, Event_Location, Event_Type, Event_Genre, Event_Musician " +
+                    "from Event_T " +
+                    "where Event_HostEmail = @email";
+
+                SqlCommand cmd = new SqlCommand(query, connection);
+
+                cmd.Parameters.AddWithValue("@email", email);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Event myEvent = new Event();
+
+                    myEvent.eventName = reader["Event_Name"].ToString();
+                    myEvent.eventDateStart = reader["Event_StartDate"].ToString();
+                    myEvent.eventDateEnd = (reader["Event_EndDate"]).ToString();
+                    myEvent.eventType = (reader["Event_Type"]).ToString();
+                    myEvent.eventLocation = reader["Event_Location"].ToString();
+                    myEvent.eventGenre = reader["Event_Genre"].ToString();
+                    myEvent.eventMusician = reader["Event_Musician"].ToString();
+
+                    eventList.Add(myEvent);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return eventList;
+        }
+        
         public void InsertMessage(int connectionID, string messageContent, string messageSender)
         {
             using (SqlConnection conn = new SqlConnection(_connectionString))

@@ -9,8 +9,10 @@ namespace WiredGroove.Classes
     {
         public string eventName { get; set; }
         public string eventType { get; set; }
-        public DateTime eventDateStart { get; set; }
-        public DateTime eventDateEnd { get; set; }
+        public string eventDateStart { get; set; }
+        public string eventDateEnd { get; set; }
         public string eventLocation { get; set; }
+        public string eventGenre { get; set; }
+        public string eventMusician { get; set; }
     }
 }
