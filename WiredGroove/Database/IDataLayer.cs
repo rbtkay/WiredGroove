@@ -20,11 +20,12 @@ namespace WiredGroove.Database
         List<Media> GetAllMedia();
         string GetPictureMedia(int id);
         List<PopularArtist> SearchResultArtist(string name, string genre, string location, string instrument);
-        bool CreateEvent(string email, string name, string startDate, string endDate, string location, int capacity, string type, float price, float budget, string genre);
+        bool CreateEvent(string email, string name, string startDate, string endDate, string location, int capacity, string type, float price, float budget, string genre,string musician);
         List<Connection> GetListConnection(string email);
         List<Message> GetListMessage(int connectionID);
         int GetConnectionID(string sender, string destination);
         List<PopularArtist> GeneralSearch(string generalSearch);
+        List<Event> GetMyEvents(string email);
     }
 
     public class DataLayerFactory

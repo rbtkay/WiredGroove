@@ -14,9 +14,10 @@ namespace WiredGroove
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            hiddenField.Value = Request.Form.Get("generalSearch");
             if (hiddenField.Value != null)
             {
-                Session["generalSearch"] = Request.Form.Get("generalSearch");
+                Session["generalResult"] = hiddenField.Value;
             }
         }
 

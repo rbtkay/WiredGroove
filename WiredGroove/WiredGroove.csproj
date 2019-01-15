@@ -95,9 +95,11 @@
     <Content Include="Inbox.aspx" />
     <Content Include="Logout.aspx" />
     <Content Include="Messages.aspx" />
+    <Content Include="MyEvent.aspx" />
     <Content Include="Scripts\CreateEvent.js" />
     <Content Include="Scripts\Inbox.js" />
     <Content Include="Scripts\LoggedInHome.js" />
+    <Content Include="Scripts\MyEvent.js" />
     <Content Include="Scripts\SearchResult.js" />
     <Content Include="Scripts\Message.js" />
     <Content Include="Scripts\sHomePage.js" />
@@ -188,6 +190,13 @@
     </Compile>
     <Compile Include="Messages.aspx.designer.cs">
       <DependentUpon>Messages.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MyEvent.aspx.cs">
+      <DependentUpon>MyEvent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MyEvent.aspx.designer.cs">
+      <DependentUpon>MyEvent.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="result.aspx.cs">

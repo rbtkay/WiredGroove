@@ -1,9 +1,9 @@
 ﻿$(document).ready(function () {
 
-    if ($("#hiddenField").val() != null) {
+    if ($("#hiddenField").val() != "") {
         $.ajax({
             type: "POST",
-            url: "SearchResult.aspx/GenralSearch",
+            url: "SearchResult.aspx/GeneralSearch",
             data: '{}',
             contentType: "application/json; charset=utf-8",
             dataType: "json",
