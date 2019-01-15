@@ -26,6 +26,7 @@ namespace WiredGroove.Database
         int GetConnectionID(string sender, string destination);
         List<PopularArtist> GeneralSearch(string generalSearch);
         List<Event> GetMyEvents(string email);
+        void InsertMessage(int connectionID, string messageContent, string messageSender);
     }
 
     public class DataLayerFactory

@@ -551,7 +551,7 @@ namespace WiredGroove.Database
                 try
                 {
                     conn.Open();
-                    string query = "select Account_T.Account_FullName from Account_T where Account_T.Account_Email in " +
+                    string query = "select Account_T.Account_Email, Account_T.Account_FullName from Account_T where Account_T.Account_Email in " +
                         "(select distinct Connection_T.Connection_Email from Connection_T where Connection_T.Account_Email = @EMAIL)";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
@@ -561,6 +561,7 @@ namespace WiredGroove.Database
                     while (sdr.Read())
                     {
                         Connection connection = new Connection();
+                        connection.connectionID = GetConnectionID(email, sdr["Account_Email"].ToString());
                         connection.destinationName = sdr["Account_FullName"].ToString();
                         listConnection.Add(connection);
                     }
@@ -581,46 +582,43 @@ namespace WiredGroove.Database
         public List<Message> GetListMessage(int connectionID)
         {
             List<Message> listMessage = new List<Message>();
-
-            using (SqlConnection conn = new SqlConnection(_connectionString))
+            SqlConnection conn = new SqlConnection(_connectionString);
+            try
             {
-                try
+                conn.Open();
+                string query = "select Message_Content, Message_Sender, Message_Timestamp from Message_T where Connection_ID = @CONNECTIONID";
+
+
+                //string query = "select * from Message_T where Message_T.Connection_ID = " + 
+                //    "(select Connection_T.Connection_ID from Connection_T where Connection_T.Account_Email =  @EMAIL " +
+                //    ""
+                //in " +
+                //           "(select Connection_T.Connection_ID where " +
+                //           "(Connection_T.Account_Email = @EMAIL and Connection_T.Connection_Email = @DESTINATION) OR " +
+                //           "(Connection_T.Account_Email = @DESTINATION and Connection_T.Connection_Email = @EMAIL)) " +
+                //           "order by Message_Timestamp desc";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@CONNECTIONID", connectionID);
+                SqlDataReader sdr = cmd.ExecuteReader();
+
+                while (sdr.Read())
                 {
-                    conn.Open();
-                    string query = "select * from Message_T where Connection_ID = @CONNECTIONID order by Message_Timestamp desc";
-
-
-                    //string query = "select * from Message_T where Message_T.Connection_ID = " + 
-                    //    "(select Connection_T.Connection_ID from Connection_T where Connection_T.Account_Email =  @EMAIL " +
-                    //    ""
-                    //in " +
-                    //           "(select Connection_T.Connection_ID where " +
-                    //           "(Connection_T.Account_Email = @EMAIL and Connection_T.Connection_Email = @DESTINATION) OR " +
-                    //           "(Connection_T.Account_Email = @DESTINATION and Connection_T.Connection_Email = @EMAIL)) " +
-                    //           "order by Message_Timestamp desc";
-
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@CONNECTIONID", connectionID);
-                    SqlDataReader sdr = cmd.ExecuteReader();
-
-                    while (sdr.Read())
-                    {
-                        Message msg = new Message();
-                        msg.messageSender = sdr["Account_Email"].ToString();
-                        msg.messageContent = sdr["Message_Content"].ToString();
-                        msg.messageTimestamp = sdr["Message_Timestamp"].ToString();
-                        listMessage.Add(msg);
-                    }
-
+                    Message msg = new Message();
+                    msg.messageContent = sdr["Message_Content"].ToString();
+                    msg.messageSender = sdr["Message_Sender"].ToString();
+                    msg.messageTimestamp = "1"/*sdr["Message_Timestamp"].ToString()*/;
+                    listMessage.Add(msg);
                 }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-                finally
-                {
-                    conn.Close();
-                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
             }
 
             return listMessage;
@@ -748,6 +746,33 @@ namespace WiredGroove.Database
                 connection.Close();
             }
             return eventList;
+        }
+        
+        public void InsertMessage(int connectionID, string messageContent, string messageSender)
+        {
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string query = "insert into Message_T (Connection_ID, Message_Content, Message_Sender) values (@CONNECTIONID, @CONTENT, @SENDER)";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@CONNECTIONID", connectionID);
+                    cmd.Parameters.AddWithValue("@CONTENT", messageContent);
+                    cmd.Parameters.AddWithValue("@SENDER", messageSender);
+
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
         }
     }
 }

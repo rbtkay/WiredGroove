@@ -13,20 +13,26 @@ namespace WiredGroove
 {
     public partial class Messages : System.Web.UI.Page
     {
-        static string email;
-        static string destinationEmail;
+        public static int connectionID;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            email = Session["signInEmail"] as string;
-            destinationEmail = Request.QueryString["Connection_Email"].ToString();
+            connectionID = Int32.Parse(Request.QueryString["connectionId"].ToString());
+            //destinationEmail = Request.QueryString["Connection_Email"].ToString();
         }
 
         [WebMethod]
         public static List<Message> GetMessages()
         {
-            int connectionID = DataLayerFactory.Instance.GetConnectionID(email, destinationEmail);
             List<Message> messageList = DataLayerFactory.Instance.GetListMessage(connectionID);
-            return messageList;            
+            return messageList;
+        }
+
+        protected void btnSendMessage_Click(object sender, EventArgs e)
+        {
+            string content = txtMessageContent.Text;
+            string senderName = DataLayerFactory.Instance.GetAccountName(Session["signInEmail"] as string);
+            DataLayerFactory.Instance.InsertMessage(connectionID, content, senderName);
         }
     }
 }

@@ -52,11 +52,11 @@
                                         </td>
                                     </tr>
                                 </table>
-                                <asp:Button ID="btnUpload" class="btn btn-primary" Style="background-color: maroon; display:flex; justify-content:center;" runat="server" Text="Upload" OnClick="btnUpload_Click" />
+                                <asp:Button ID="btnUpload" class="btn btn-primary" Style="background-color: maroon; display: flex; justify-content: center;" runat="server" Text="Upload" OnClick="btnUpload_Click" />
 
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-default"  data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                             </div>
                         </div>
 
