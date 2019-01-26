@@ -26,7 +26,7 @@ namespace WiredGroove.Database
         int GetConnectionID(string sender, string destination);
         List<PopularArtist> GeneralSearch(string generalSearch);
         List<Event> GetMyEvents(string email);
-        void InsertMessage(int connectionID, string messageContent, string messageSender);
+        void InsertMessage(int connectionID, string messageContent, string messageSender, string messageSenderEmail);
         List<Media> GetAccountMedia(string email);
         void InsertConnection(string email, string connection);
         bool CheckConnection(string email, string connection);

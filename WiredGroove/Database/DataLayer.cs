@@ -638,7 +638,7 @@ namespace WiredGroove.Database
             try
             {
                 conn.Open();
-                string query = "select Message_Content, Message_Sender, Message_Timestamp from Message_T where Connection_ID = @CONNECTIONID";
+                string query = "select Message_Content, Message_Sender, Message_Sender_Email, Message_Timestamp from Message_T where Connection_ID = @CONNECTIONID";
 
 
                 //string query = "select * from Message_T where Message_T.Connection_ID = " + 
@@ -660,6 +660,7 @@ namespace WiredGroove.Database
                     msg.messageContent = sdr["Message_Content"].ToString();
                     msg.messageSender = sdr["Message_Sender"].ToString();
                     msg.messageTimestamp = "1"/*sdr["Message_Timestamp"].ToString()*/;
+                    msg.messageSenderEmail = sdr["Message_Sender_Email"].ToString();
                     listMessage.Add(msg);
                 }
 
@@ -800,19 +801,20 @@ namespace WiredGroove.Database
             return eventList;
         }
 
-        public void InsertMessage(int connectionID, string messageContent, string messageSender)
+        public void InsertMessage(int connectionID, string messageContent, string messageSender, string messageSenderEmail)
         {
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
                 try
                 {
                     conn.Open();
-                    string query = "insert into Message_T (Connection_ID, Message_Content, Message_Sender) values (@CONNECTIONID, @CONTENT, @SENDER)";
+                    string query = "insert into Message_T (Connection_ID, Message_Content, Message_Sender, Message_Sender_Email) values (@CONNECTIONID, @CONTENT, @SENDER, @EMAIL)";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@CONNECTIONID", connectionID);
                     cmd.Parameters.AddWithValue("@CONTENT", messageContent);
                     cmd.Parameters.AddWithValue("@SENDER", messageSender);
+                    cmd.Parameters.AddWithValue("@EMAIL", messageSenderEmail);
 
                     cmd.ExecuteNonQuery();
                 }

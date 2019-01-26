@@ -19,6 +19,23 @@ namespace WiredGroove
         {
             connectionID = Int32.Parse(Request.QueryString["connectionId"].ToString());
             //destinationEmail = Request.QueryString["Connection_Email"].ToString();
+            if (!String.IsNullOrEmpty(Session["signInEmail"].ToString()))
+            {
+                HiddenSenderEmail.Value = Session["signInEmail"].ToString();
+            }
+        }
+
+        protected void btnSendMessage_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtMessageContent.Text))
+            {
+                string content = txtMessageContent.Text;
+                string senderName = DataLayerFactory.Instance.GetAccountName(Session["signInEmail"] as string);
+                string senderEmail = Session["signInEmail"] as string;
+
+                DataLayerFactory.Instance.InsertMessage(connectionID, content, senderName, senderEmail);
+                txtMessageContent.Text = String.Empty;
+            }
         }
 
         [WebMethod]
@@ -26,13 +43,6 @@ namespace WiredGroove
         {
             List<Message> messageList = DataLayerFactory.Instance.GetListMessage(connectionID);
             return messageList;
-        }
-
-        protected void btnSendMessage_Click(object sender, EventArgs e)
-        {
-            string content = txtMessageContent.Text;
-            string senderName = DataLayerFactory.Instance.GetAccountName(Session["signInEmail"] as string);
-            DataLayerFactory.Instance.InsertMessage(connectionID, content, senderName);
         }
     }
 }
