@@ -594,8 +594,14 @@ namespace WiredGroove.Database
                 try
                 {
                     conn.Open();
-                    string query = "select Account_T.Account_Email, Account_T.Account_FullName from Account_T where Account_T.Account_Email in " +
-                        "(select distinct Connection_T.Connection_Email from Connection_T where Connection_T.Account_Email = @EMAIL)";
+                    string query = "select distinct Connection_T.Connection_ID, Account_T.Account_FullName, Account_T.Account_Email from Account_T, Connection_T " +
+                        "where(Account_T.Account_Email = Connection_T.Connection_Email " +
+                        "or Account_T.Account_Email = Connection_T.Account_Email) " +
+                        "and Connection_T.Connection_ID " +
+                        "in(select Connection_T.Connection_ID " +
+                        "from Connection_T " +
+                        "where Connection_T.Connection_Email = @EMAIL " +
+                        "or Connection_T.Account_Email = @EMAIL)";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@EMAIL", email);
@@ -606,7 +612,10 @@ namespace WiredGroove.Database
                         Connection connection = new Connection();
                         connection.connectionID = GetConnectionID(email, sdr["Account_Email"].ToString());
                         connection.destinationName = sdr["Account_FullName"].ToString();
-                        listConnection.Add(connection);
+                        if (sdr["Account_Email"].ToString() != email)
+                        {
+                            listConnection.Add(connection);
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -851,7 +860,9 @@ namespace WiredGroove.Database
             {
                 try
                 {
-                    string query = "select distinct Connection_ID from Connection_T where (Account_Email = @EMAIL and Connection_Email = @CONNECTION) or(Account_Email = @CONNECTION and Connection_Email = @EMAIL)";
+                    string query = "select distinct Connection_ID from Connection_T where" +
+                        " (Account_Email = @EMAIL and Connection_Email = @CONNECTION)" +
+                        " or(Account_Email = @CONNECTION and Connection_Email = @EMAIL)";
                     conn.Open();
 
                     SqlCommand cmd = new SqlCommand(query, conn);
