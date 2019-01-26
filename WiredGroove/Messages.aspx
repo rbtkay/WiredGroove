@@ -28,6 +28,6 @@
             </div>
         </div>
 
+        <asp:HiddenField ID="HiddenSenderEmail" ClientIDMode="static" runat="server" />
     </form>
-
 </asp:Content>

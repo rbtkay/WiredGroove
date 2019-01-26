@@ -10,5 +10,6 @@ namespace WiredGroove.Classes
         public string messageSender { get; set; }
         public string messageContent { get; set; }
         public string messageTimestamp { get; set; }
+        public string messageSenderEmail { get; set; }
     }
 }
