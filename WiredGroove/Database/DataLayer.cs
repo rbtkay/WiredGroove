@@ -60,7 +60,7 @@ namespace WiredGroove.Database
                 string query1 = "update Account_T " +
                                         "set Account_Picture = " +
                                         "(SELECT BulkColumn " +
-                                        "FROM Openrowset(Bulk 'D:/Dev/WiredGroove/WiredGroove/Images/BasicAccount.png', Single_Blob) as img)" +
+                                        "FROM Openrowset(Bulk 'D:/AUST/Web Prog/WiredGroove/WiredGroove/Images/BasicAccount.png', Single_Blob) as img)" +
                                         "where Account_Email = @email";
 
                 SqlCommand cmd = new SqlCommand(query1, connection);

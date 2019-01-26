@@ -21,7 +21,7 @@
 
                 <div class="form-group col-sm-12">
                     <label for="txtPasswordID">Password</label>
-                    <asp:TextBox ID="txtPasswordID" ClientIDMode="Static" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtPasswordID" ClientIDMode="Static" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
                 </div>
 
                 <br />

@@ -65,7 +65,7 @@ namespace WiredGroove
             HttpPostedFile postedfile = FileUpload.PostedFile;
 
             string fileName = Path.GetFileName(postedfile.FileName);
-            string fileExtension = Path.GetExtension(fileName);
+            string fileExtension = Path.GetExtension(fileName).ToLower();
 
             string fileType = string.Empty;
             if (fileExtension == ".jpg" || fileExtension == ".gif" || fileExtension == ".bmp" || fileExtension == ".png")

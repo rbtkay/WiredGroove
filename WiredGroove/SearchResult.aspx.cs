@@ -24,26 +24,26 @@ namespace WiredGroove
         [WebMethod]
         public static List<PopularArtist> SearchResultArtist()
         {
-            string name = string.Empty;
-            string genre = string.Empty;
-            string location = string.Empty;
-            string instrument = string.Empty;
+            //string name = string.Empty;
+            //string genre = string.Empty;
+            //string location = string.Empty;
+            //string instrument = string.Empty;
 
             //if (!String.IsNullOrEmpty(HttpContext.Current.Session["searchName"] as String))
             //{
-                name = HttpContext.Current.Session["searchName"].ToString();
+                string name = HttpContext.Current.Session["searchName"].ToString();
             //}
             //if (!String.IsNullOrEmpty(HttpContext.Current.Session["searchName"] as String))
             //{
-                genre = HttpContext.Current.Session["searchGenre"].ToString();
+                string genre = HttpContext.Current.Session["searchGenre"].ToString();
             //}
             //if (!String.IsNullOrEmpty(HttpContext.Current.Session["searchName"] as String))
             //{
-                location = HttpContext.Current.Session["searchLocation"].ToString();
+                string location = HttpContext.Current.Session["searchLocation"].ToString();
             //}
             //if (!String.IsNullOrEmpty(HttpContext.Current.Session["searchName"] as String))
             //{
-                instrument = HttpContext.Current.Session["searchInstrument"].ToString();
+                string instrument = HttpContext.Current.Session["searchInstrument"].ToString();
             //}
 
             //if(String.IsNullOrEmpty(name) && String.IsNullOrEmpty(genre) && String.IsNullOrEmpty(location) && String.IsNullOrEmpty(instrument))

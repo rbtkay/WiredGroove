@@ -76,7 +76,7 @@
                     <%      }
                         else
                         { %>
-                    <li><a href="EnrolledJobs.aspx" id="enrolledJobs">Enrolled Jobs</a></li>
+                    <li><a href="MyEvent.aspx" id="enrolledJobs">Enrolled Jobs</a></li>
                     <%} %>
                     <li><a href="Inbox.aspx">Inbox</a></li>
 
